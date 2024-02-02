@@ -10,4 +10,4 @@ import { SharedModule } from '../../shared/modules/shared.module';
     SharedModule,
   ]
 })
-export class VideoHeighlightsModule { }
+export class VideoHighlightsModule { }

@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { PodcastComponent } from './pages/podcast/podcast.component';
+import { VideoHighlightsComponent } from './pages/video-highlights/video-highlights.component';
 import { SharedLayoutComponent } from '../../shared/layout/shared-layout/shared-layout.component';
 
-export const podcastRoutes: Routes = [
+export const videoHighlightsRoutes: Routes = [
     {
-        path: '', component: SharedLayoutComponent, title: "Podcast",
+        path: '', component: SharedLayoutComponent, title: "Videoes",
         children: [
             {
                 path: '',  // child route path
-                title: "Podcast",
-                component: PodcastComponent,  // child route component that the router renders
+                title: "Videoes",
+                component: VideoHighlightsComponent,  // child route component that the router renders
             },
             // {
             //     path: 'register',
@@ -23,4 +23,4 @@ export const podcastRoutes: Routes = [
         ],
     },
 ];
-export default podcastRoutes;
+export default videoHighlightsRoutes;
