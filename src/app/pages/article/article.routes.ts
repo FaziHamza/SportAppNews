@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ArticleComponent } from './pages/article/article.component';
 import { SharedLayoutComponent } from '../../shared/layout/shared-layout/shared-layout.component';
+import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
 
 export const articleRoutes: Routes = [
     {
@@ -10,6 +11,11 @@ export const articleRoutes: Routes = [
                 path: '',  // child route path
                 title: "Article",
                 component: ArticleComponent,  // child route component that the router renders
+            },
+            {
+                path: 'news',  // child route path
+                title: "ArticleDetail",
+                component: ArticleDetailComponent,  // child route component that the router renders
             },
             //     {
             //         path: 'register',
