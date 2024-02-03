@@ -1,2 +1,7 @@
-    <button class="w-auto h-auto p-2 bg-black text-white" (click)="toggleTheme()">Toggle Theme</button>
-  
+<button class="w-auto h-auto p-2" (click)="darkMode.set(!darkMode())">click to
+    switch</button>
+<div class="h-32 w-full bg-white dark:bg-black">
+    <div class="h-20 w-full bg-red dark:bg-blue-200">
+        test dark
+    </div>
+</div>

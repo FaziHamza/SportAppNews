@@ -9,7 +9,6 @@ export class ThemeService {
 
   toggleTheme(): void {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.className = this.currentTheme;
   }
 
   getCurrentTheme(): string {

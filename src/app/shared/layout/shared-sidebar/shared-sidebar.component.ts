@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ThemeService } from '../../../theme-service.service';
+import { Component, HostBinding, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,14 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './shared-sidebar.component.scss'
 })
 export class SharedSidebarComponent {
-  constructor(private themeService: ThemeService) { }
+  darkMode = signal<boolean>(false)
 
-  toggleTheme(): void {
-    this.themeService.toggleTheme();
-  }
-
-  getCurrentTheme(): string {
-    return this.themeService.getCurrentTheme();
+  @HostBinding('class.dark') get mode() {
+    return this.darkMode()
   }
 
 }

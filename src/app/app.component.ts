@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule ,HttpClientModule, RouterOutlet],
-  providers:[MetaTagService],
+  imports: [CommonModule, HttpClientModule, RouterOutlet],
+  providers: [MetaTagService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'app';
+  darkMode = signal<boolean>(false)
+
   constructor(
     private router: Router,
     private metaTagService: MetaTagService
@@ -48,4 +50,10 @@ export class AppComponent {
 
     });
   }
+  @HostBinding('class.dark') get mode() {
+    return this.darkMode()
+  }
+
 }
+
+
