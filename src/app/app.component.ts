@@ -1,25 +1,29 @@
-import { Component, HostBinding, OnInit, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { MetaTagService } from './meta-tag.service';
 import { filter } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { ThemeService } from './theme-service.service';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, HttpClientModule, RouterOutlet],
-  providers: [MetaTagService],
+  providers: [MetaTagService, ThemeService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'app';
-  darkMode = signal<boolean>(false)
+  darkMode$ = this.themeService.darkMode$;
+
+  
 
   constructor(
     private router: Router,
-    private metaTagService: MetaTagService
+    private metaTagService: MetaTagService,
+    private themeService: ThemeService
   ) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -49,9 +53,6 @@ export class AppComponent {
 
 
     });
-  }
-  @HostBinding('class.dark') get mode() {
-    return this.darkMode()
   }
 
 }
