@@ -7,10 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ThemeService {
 
-  private modeSubject = new BehaviorSubject<boolean>(false);
+  private modeSubject = new BehaviorSubject<boolean>(true);
   darkMode$ = this.modeSubject.asObservable();
 
   toggleDarkMode(): void {
-    this.modeSubject.next(!this.modeSubject.value);
+    const newDarkModeValue = !this.modeSubject.value;
+    this.modeSubject.next(newDarkModeValue);
+    // window.localStorage.setItem('darkMode', JSON.stringify(newDarkModeValue));
   }
+  
 }

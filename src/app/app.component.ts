@@ -18,7 +18,6 @@ export class AppComponent {
   title = 'app';
   darkMode$ = this.themeService.darkMode$;
 
-  
 
   constructor(
     private router: Router,
@@ -49,12 +48,9 @@ export class AppComponent {
         }))
       }
 
-      // Update logic based on URL
-
-
     });
   }
-
+ 
 }
 
 
