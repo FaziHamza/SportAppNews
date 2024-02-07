@@ -18,5 +18,22 @@ export class SharedSidebarComponent {
   toggleDarkMode(): void {
     this.themeService.toggleDarkMode();
   }
+  isDropdownOpen: boolean = false;
 
+  // toggleTheme(): void {
+  //   this.themeService.toggleTheme();
+  // }
+
+  // getCurrentTheme(): string {
+  //   return this.themeService.getCurrentTheme();
+  // }
+  // isSidebarHidden: boolean = false;
+  // openSidebr() {
+  //   this.isSidebarHidden = !this.isSidebarHidden;
+  // }
+  
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }

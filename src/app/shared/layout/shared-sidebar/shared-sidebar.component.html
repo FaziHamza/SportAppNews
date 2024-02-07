@@ -1,9 +1,377 @@
 <!-- <button class="w-auto h-auto p-2" (click)="darkMode.set(!darkMode())">click to
     switch</button> -->
-<button class="w-auto h-auto p-2" (click)="toggleDarkMode()">click to
-    switch</button>
-<div class="h-32 w-full bg-white dark:bg-black">
-    <div class="h-20 w-full bg-red dark:bg-blue-200">
-        test dark
+
+<div
+    class="sidebar border-l-slate-50  fixed top-0 bottom-0 lg:right-0 p-2 lg:w-[320px] sm: w-10/12  overflow-y-auto text-center "
+    style=" background-color: #F5F5F5">
+
+    <div class="text-black w-full  relative  ">
+        <div class="p-2.5 mb-7  w-full     ">
+            <i onclick="hideSideBar()"
+                class="fa-solid fa-xmark text-lg absolute right-7 top-2 lg:flex lg:left-4 lg:top-2"></i>
+
+        </div>
+        <div class="heading  w-full">
+            <span class="text-red-800 text-[15px]">Hockey </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+
+    <div class="relative inline-block text-left w-full">
+        <div class="flex  justify-between  p-3 sm:py-3 pl-3 pr-10   w-full">
+            <span class="text-black"> SHL</span>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="dropdown relative  w-full right-0  space-y-2 pl-0 bg-white ">
+            <!-- Dropdown items go here -->
+            <a href="#" class="block text-sm">Modo</a>
+            <a href="#" class="block text-sm">Timrå</a>
+            <a href="#" class="block text-sm">Växjö</a>
+            <a href="#" class="block text-sm">Modo</a>
+            <a href="#" class="block text-sm">Luleå</a>
+            <a href="#" class="block text-sm">Skellefteå</a>
+            <a href="#" class="block text-sm">Malmö</a>
+            <a href="#" class="block text-sm">Frölunda
+            </a>
+            <a href="#" class="block  text-sm">HV71</a>
+            <a href="#" class="block  text-sm">Färjestad</a>
+            <a href="#" class="block  text-sm">Oskarshamn
+            </a>
+            <a href="#" class="block px-4 py-2 text-sm">Linköping</a>
+        </div>
+    </div>
+    <div class="text-black ">
+
+        <div class="heading ">
+            <span class="text-red-800 text-[15px]">Fotboll </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+
+        <div class="relative inline-block text-left">
+            <div class="flex justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
+                <span class="text-black"> England</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block text-sm">Engelsk Fotboll</a>
+                <a href="#" class="block text-sm">Arsenal</a>
+                <a href="#" class="block text-sm">Manchester City</a>
+                <a href="#" class="block text-sm">Manchester U</a>
+                <a href="#" class="block text-sm">LiverPool</a>
+                <a href="#" class="block text-sm">Chelsea</a>
+                <a href="#" class="block text-sm">Tottenham</a>
+                <a href="#" class="block text-sm">Svensk Fotboll
+                </a>
+
+            </div>
+        </div>
+
+        <div class="relative inline-block text-left">
+            <div class="flex justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
+                <span class="text-black"> Italien</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block text-sm">Italiensk Fotboll</a>
+
+            </div>
+        </div>
+        <div class="relative inline-block text-left">
+            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+                <span class="text-black"> Spanien</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block  text-sm "> Fotboll Spanien</a>
+
+            </div>
+        </div>
+        <div class="relative inline-block text-left">
+            <div class="flex  justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
+                <span class="text-black"> Frankrike</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown w-full right-0  pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block  text-sm "> Fransk Fotboll</a>
+
+            </div>
+        </div>
+
+        <div class="relative inline-block text-left">
+            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+                <span class="text-black"> Tyskland</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block  text-sm "> Tysk Fotboll</a>
+
+            </div>
+        </div>
+        <div class="relative inline-block text-left w-full">
+            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+                <span class="text-black"> Sverige</span>
+                <button type="button" (click)="toggleDropdown()">
+
+                    <div class="text-black">
+
+                        <i class="fa-solid fa-chevron-down"
+                            *ngIf="!isDropdownOpen"></i>
+                        <i class="fa-solid fa-angle-up"
+                            *ngIf="isDropdownOpen"></i>
+                    </div>
+                </button>
+
+            </div>
+            <div>
+                <hr>
+            </div>
+            <div *ngIf="isDropdownOpen"
+                class="relative dropdown  w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
+                <!-- Dropdown items go here -->
+                <a href="#" class="block  text-sm ">Svensk Fotboll</a>
+                <a href="#" class="block  text-sm ">Malmö FF</a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="text-black ">
+
+        <div class="heading ">
+            <span class="text-red-800 text-[15px]">Ridsport </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+    <div class="relative inline-block text-left w-full">
+        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+            <span class="text-black"> Kategori</span>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="relative dropdown w-full ight-0 mt-2 space-y-2 pl-0 bg-white ">
+            <!-- Dropdown items go here -->
+            <a href="#" class="block  text-sm "> Dressyr</a>
+            <a href="#" class="block  text-sm "> Hoppning</a>
+
+        </div>
+    </div>
+    <div class="text-black ">
+
+        <div class="heading ">
+            <span class="text-red-800 text-[15px]">Golf </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+    <div class="relative inline-block text-left w-full">
+        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+            <span class="text-black"> Tävlingar</span>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
+            <!-- Dropdown items go here -->
+            <a href="#" class="block  text-sm "> Top News Internationellt</a>
+
+        </div>
+    </div>
+    <div class="text-black ">
+
+        <div class="heading ">
+            <span class="text-red-800 text-[15px]">Tennis </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+    <div class="relative inline-block text-left w-full">
+        <div class="flex  justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
+            <span class="text-black"> Rubriker</span>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
+            <!-- Dropdown items go here -->
+            <a href="#" class="block  text-sm "> Top News Tennis</a>
+
+        </div>
+    </div>
+    <div class="text-black ">
+
+        <div class="heading ">
+            <span class="text-red-800 text-[15px]">Radiosport </span><span
+                class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+    <div class="relative inline-block text-left w-full">
+        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
+            <span class="text-black"> Nyheter</span>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
+            <!-- Dropdown items go here -->
+            <a href="#" class="block  text-sm "> Radiosporten</a>
+
+        </div>
+    </div>
+    <div class="text-black  ">
+
+        <div class="heading mb-3 ">
+            <span class="text-red-800 text-[15px] heading-text">Setting
+            </span><span class="line bg-slate-700"></span>
+
+        </div>
+    </div>
+    <div class="flex justify-between mt-4 ">
+        <p>Color palette</p>
+        <label class="relative inline-flex items-center me-5 cursor-pointer">
+            <input type="checkbox" value class="sr-only peer"
+                (click)="toggleDarkMode()">
+            <div
+                class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+        </label>
     </div>
 </div>
