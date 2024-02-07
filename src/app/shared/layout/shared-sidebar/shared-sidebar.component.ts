@@ -31,7 +31,7 @@ export class SharedSidebarComponent {
   // openSidebr() {
   //   this.isSidebarHidden = !this.isSidebarHidden;
   // }
-  
+
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;

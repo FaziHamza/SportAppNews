@@ -1,26 +1,43 @@
 <!-- <button class="w-auto h-auto p-2" (click)="darkMode.set(!darkMode())">click to
     switch</button> -->
 
-<div
-    class="sidebar border-l-slate-50  fixed top-0 bottom-0 lg:right-0 p-2 lg:w-[320px] sm: w-10/12  overflow-y-auto text-center "
-    style=" background-color: #F5F5F5">
+<div #sidebar id="sidebar"
+    class="sidebars border-l-slate-50 transitio-opacity duration-500 ease-in-out fixed top-0 bottom-0 lg:right-0 px-2  lg:w-[320px] w-[320px] overflow-y-auto   bg-white">
 
-    <div class="text-black w-full  relative  ">
-        <div class="p-2.5 mb-7  w-full     ">
-            <i onclick="hideSideBar()"
-                class="fa-solid fa-xmark text-lg absolute right-7 top-2 lg:flex lg:left-4 lg:top-2"></i>
+    <div class="text-black w-full   relative  ">
+        <div class="p-2.5   ">
 
+            <!-- <i (click)="toggleDisplay()"
+                class="fa-solid fa-xmark text-lg absolute right-7   lg:left-4 lg:top-2 w-7 h-7 text-center text-white rounded-2xl bg-red-600 "></i> -->
+
+            <img
+                src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
+                class="w-32 ml-10" alt>
         </div>
-        <div class="heading  w-full">
-            <span class="text-red-800 text-[15px]">Hockey </span><span
-                class="line bg-slate-700"></span>
-
+        <div
+            class=" bg-black  rounded-lg flex justify-center h-18 p-3 w-[290px] ml-1 ">
+            <img
+                src="https://www.sportspotsverige.se/V4/Content/TopicLogo/mainlogo.png"
+                class=" w-[85px] h-[50px]" alt>
         </div>
+        <p class="p-3 text-justify">
+            V盲lj dina rubriker fr氓n nedanst氓ende menu. Kryssa i rubriken som du
+            vill spara den tillsvidare i annat fall klicka
+            p氓 rubriken f枚r att se nyheterna:
+        </p>
+
     </div>
 
-    <div class="relative inline-block text-left w-full">
-        <div class="flex  justify-between  p-3 sm:py-3 pl-3 pr-10   w-full">
-            <span class="text-black"> SHL</span>
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
+                    class="mr-1 mt-1" style="height: 16px; width: 17px;">
+
+                <span class=" text-[15px]">Hockey </span>
+            </div>
             <button type="button" (click)="toggleDropdown()">
 
                 <div class="text-black">
@@ -30,215 +47,181 @@
                     <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
                 </div>
             </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> Rubriker</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
         <div>
-            <hr>
+
         </div>
         <div *ngIf="isDropdownOpen"
-            class="dropdown relative  w-full right-0  space-y-2 pl-0 bg-white ">
-            <!-- Dropdown items go here -->
-            <a href="#" class="block text-sm">Modo</a>
-            <a href="#" class="block text-sm">Timrå</a>
-            <a href="#" class="block text-sm">Växjö</a>
-            <a href="#" class="block text-sm">Modo</a>
-            <a href="#" class="block text-sm">Luleå</a>
-            <a href="#" class="block text-sm">Skellefteå</a>
-            <a href="#" class="block text-sm">Malmö</a>
-            <a href="#" class="block text-sm">Frölunda
-            </a>
-            <a href="#" class="block  text-sm">HV71</a>
-            <a href="#" class="block  text-sm">Färjestad</a>
-            <a href="#" class="block  text-sm">Oskarshamn
-            </a>
-            <a href="#" class="block px-4 py-2 text-sm">Linköping</a>
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div><img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[13px]">Leksand</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex  space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div><img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Timra_IK_logo.svg/1200px-Timra_IK_logo.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Timra_IK_logo.svg/1200px-Timra_IK_logo.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Timr氓</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex  space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div><img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rogle_BK_logo.svg/800px-Rogle_BK_logo.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rogle_BK_logo.svg/800px-Rogle_BK_logo.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">R枚gle</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex space-x-1">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Swedish_Hockey_League_logo.svg/1200px-Swedish_Hockey_League_logo.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Swedish_Hockey_League_logo.svg/1200px-Swedish_Hockey_League_logo.svg.png"
+                        class="h-5 w-6 ">
+                    <span class=" text-[12px]">SHL</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/1200px-05_NHL_Shield.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/1200px-05_NHL_Shield.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">NHL</span>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="text-black ">
-
-        <div class="heading ">
-            <span class="text-red-800 text-[15px]">Fotboll </span><span
-                class="line bg-slate-700"></span>
-
-        </div>
-    </div>
-
-    <div class="flex flex-col">
-
-        <div class="relative inline-block text-left">
-            <div class="flex justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
-                <span class="text-black"> England</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/Soccer_ball.svg/2048px-Soccer_ball.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/Soccer_ball.svg/2048px-Soccer_ball.svg.png"
+                    class="mt-1 mr-1" style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Fotboll </span>
             </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block text-sm">Engelsk Fotboll</a>
-                <a href="#" class="block text-sm">Arsenal</a>
-                <a href="#" class="block text-sm">Manchester City</a>
-                <a href="#" class="block text-sm">Manchester U</a>
-                <a href="#" class="block text-sm">LiverPool</a>
-                <a href="#" class="block text-sm">Chelsea</a>
-                <a href="#" class="block text-sm">Tottenham</a>
-                <a href="#" class="block text-sm">Svensk Fotboll
-                </a>
-
-            </div>
-        </div>
-
-        <div class="relative inline-block text-left">
-            <div class="flex justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
-                <span class="text-black"> Italien</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block text-sm">Italiensk Fotboll</a>
-
-            </div>
-        </div>
-        <div class="relative inline-block text-left">
-            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-                <span class="text-black"> Spanien</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown w-full right-0  space-y-2 pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block  text-sm "> Fotboll Spanien</a>
-
-            </div>
-        </div>
-        <div class="relative inline-block text-left">
-            <div class="flex  justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
-                <span class="text-black"> Frankrike</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown w-full right-0  pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block  text-sm "> Fransk Fotboll</a>
-
-            </div>
-        </div>
-
-        <div class="relative inline-block text-left">
-            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-                <span class="text-black"> Tyskland</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block  text-sm "> Tysk Fotboll</a>
-
-            </div>
-        </div>
-        <div class="relative inline-block text-left w-full">
-            <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-                <span class="text-black"> Sverige</span>
-                <button type="button" (click)="toggleDropdown()">
-
-                    <div class="text-black">
-
-                        <i class="fa-solid fa-chevron-down"
-                            *ngIf="!isDropdownOpen"></i>
-                        <i class="fa-solid fa-angle-up"
-                            *ngIf="isDropdownOpen"></i>
-                    </div>
-                </button>
-
-            </div>
-            <div>
-                <hr>
-            </div>
-            <div *ngIf="isDropdownOpen"
-                class="relative dropdown  w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
-                <!-- Dropdown items go here -->
-                <a href="#" class="block  text-sm ">Svensk Fotboll</a>
-                <a href="#" class="block  text-sm ">Malmö FF</a>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="text-black ">
-
-        <div class="heading ">
-            <span class="text-red-800 text-[15px]">Ridsport </span><span
-                class="line bg-slate-700"></span>
-
-        </div>
-    </div>
-    <div class="relative inline-block text-left w-full">
-        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-            <span class="text-black"> Kategori</span>
             <button type="button" (click)="toggleDropdown()">
 
                 <div class="text-black">
@@ -248,30 +231,566 @@
                     <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
                 </div>
             </button>
-
-        </div>
-        <div>
-            <hr>
         </div>
         <div *ngIf="isDropdownOpen"
-            class="relative dropdown w-full ight-0 mt-2 space-y-2 pl-0 bg-white ">
-            <!-- Dropdown items go here -->
-            <a href="#" class="block  text-sm "> Dressyr</a>
-            <a href="#" class="block  text-sm "> Hoppning</a>
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> England</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
-    </div>
-    <div class="text-black ">
 
-        <div class="heading ">
-            <span class="text-red-800 text-[15px]">Golf </span><span
-                class="line bg-slate-700"></span>
+        <div *ngIf="isDropdownOpen"
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
 
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://freepngimg.com/save/32207-premier-league-file/1028x1028"
+                        alt="https://freepngimg.com/save/32207-premier-league-file/1028x1028"
+                        class="h-4 w-4 mt-0.5">
+
+                    <span class=" text-[13px]">Engelsk Fotboll</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex  space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1200px-Arsenal_FC.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1200px-Arsenal_FC.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Arsenal</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex  space-x-1 ">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox" checked="checked"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/1200px-Manchester_City_FC_badge.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Manchester City </span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md flex space-x-1">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/1200px-Manchester_United_FC_crest.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/1200px-Manchester_United_FC_crest.svg.png "
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Manchester U</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/1200px-Liverpool_FC.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Liverpool </span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Chelsea</span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Spurs_2017_badge.svg/170px-Spurs_2017_badge.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Spurs_2017_badge.svg/170px-Spurs_2017_badge.svg.png"
+                        class="h-4 w-4 mt-0.5">
+                    <span class=" text-[12px]">Tottenham</span>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div *ngIf="isDropdownOpen"
+                class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+                <span class="text-black "> Italien</span>
+                <div>
+                    <div class=" flex">
+                        <span
+                            class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                            Rubriker</span>
+                        <button type="button" class="ml-2"
+                            (click)="toggleDropdown()">
+
+                            <div class="text-black">
+
+                                <i class="fa-solid fa-chevron-down"
+                                    *ngIf="!isDropdownOpen"></i>
+                                <i class="fa-solid fa-angle-up"
+                                    *ngIf="isDropdownOpen"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="isDropdownOpen"
+                class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+                <ul class="   p-1">
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox" checked="checked"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Serie_A.png/800px-Serie_A.png"
+                            alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Serie_A.png/800px-Serie_A.png"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]">Italiensk Fotboll </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="isDropdownOpen"
+                class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+                <span class="text-black "> Spanien</span>
+                <div>
+                    <div class=" flex">
+                        <span
+                            class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                            Rubriker</span>
+                        <button type="button" class="ml-2"
+                            (click)="toggleDropdown()">
+
+                            <div class="text-black">
+
+                                <i class="fa-solid fa-chevron-down"
+                                    *ngIf="!isDropdownOpen"></i>
+                                <i class="fa-solid fa-angle-up"
+                                    *ngIf="isDropdownOpen"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="isDropdownOpen"
+                class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+                <ul class="   p-1">
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/2048px-LaLiga_logo_2023.svg.png"
+                            alt="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/2048px-LaLiga_logo_2023.svg.png"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]">Fotboll Spanien </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="isDropdownOpen"
+                class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+                <span class="text-black "> Frankrike</span>
+                <div>
+                    <div class=" flex">
+                        <span
+                            class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                            Rubriker</span>
+                        <button type="button" class="ml-2"
+                            (click)="toggleDropdown()">
+
+                            <div class="text-black">
+
+                                <i class="fa-solid fa-chevron-down"
+                                    *ngIf="!isDropdownOpen"></i>
+                                <i class="fa-solid fa-angle-up"
+                                    *ngIf="isDropdownOpen"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="isDropdownOpen"
+                class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+                <ul class="   p-1">
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/2/23/French_Football_Federation_logo.svg/1200px-French_Football_Federation_logo.svg.png"
+                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/2/23/French_Football_Federation_logo.svg/1200px-French_Football_Federation_logo.svg.png"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]">Fransk Fotboll </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="isDropdownOpen"
+                class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+                <span class="text-black "> Tyskland</span>
+                <div>
+                    <div class=" flex">
+                        <span
+                            class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                            Rubriker</span>
+                        <button type="button" class="ml-2"
+                            (click)="toggleDropdown()">
+
+                            <div class="text-black">
+
+                                <i class="fa-solid fa-chevron-down"
+                                    *ngIf="!isDropdownOpen"></i>
+                                <i class="fa-solid fa-angle-up"
+                                    *ngIf="isDropdownOpen"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="isDropdownOpen"
+                class=" p-5 sm:py-2 pl-5 pr-5 w-[250px]     bg-white ">
+
+                <ul class="   p-1">
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg"
+                            alt="https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]">Tysk Fotboll </span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div *ngIf="isDropdownOpen"
+                class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+                <span class="text-black "> Sverige</span>
+                <div>
+                    <div class=" flex">
+                        <span
+                            class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                            Rubriker</span>
+                        <button type="button" class="ml-2"
+                            (click)="toggleDropdown()">
+
+                            <div class="text-black">
+
+                                <i class="fa-solid fa-chevron-down"
+                                    *ngIf="!isDropdownOpen"></i>
+                                <i class="fa-solid fa-angle-up"
+                                    *ngIf="isDropdownOpen"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div *ngIf="isDropdownOpen"
+                class=" p-5 sm:py-2 pl-5 pr-5 w-[250px]     bg-white ">
+
+                <ul class="   p-1">
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Allsvenskan.svg/1200px-Allsvenskan.svg.png"
+                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Allsvenskan.svg/1200px-Allsvenskan.svg.png"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]">Allsvenskan </span>
+                    </li>
+                    <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                        <div class="inline-flex items-center">
+                            <label
+                                class="relative flex items-center  rounded-full cursor-pointer"
+                                htmlFor="customStyle">
+                                <input type="checkbox"
+                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                    id="customStyle" />
+                                <span
+                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-3 w-3" viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                        stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Malmo_FF_logo.svg/1200px-Malmo_FF_logo.svg.png"
+                            alt="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Malmo_FF_logo.svg/1200px-Malmo_FF_logo.svg.png"
+                            class="h-4 w-4 mt-0.5">
+                        <span class=" text-[12px]"> Malm枚 FF </span>
+                    </li>
+
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="relative inline-block text-left w-full">
-        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-            <span class="text-black"> Tävlingar</span>
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Equestrian_Eventing_pictogram.svg/2048px-Equestrian_Eventing_pictogram.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Equestrian_Eventing_pictogram.svg/2048px-Equestrian_Eventing_pictogram.svg.png"
+                    class="pt-1 pr-1" style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Ridsport </span>
+            </div>
             <button type="button" (click)="toggleDropdown()">
 
                 <div class="text-black">
@@ -281,29 +800,104 @@
                     <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
                 </div>
             </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> Kategori</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
         <div>
-            <hr>
+
         </div>
         <div *ngIf="isDropdownOpen"
-            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
-            <!-- Dropdown items go here -->
-            <a href="#" class="block  text-sm "> Top News Internationellt</a>
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[250px]     bg-white ">
 
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://sportifiedspot.com/resources/Riding-Black-Transparent.png"
+                        alt="https://sportifiedspot.com/resources/Riding-Black-Transparent.png"
+                        class="w-4 h-4 mt-0.5">
+                    <span class=" text-[12px]"> Dressyr </span>
+                </li>
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://sportifiedspot.com/resources/Jumpin-Black-Transparent.png"
+                        alt="https://sportifiedspot.com/resources/Jumpin-Black-Transparent.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]"> Hoppning </span>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <div class="text-black ">
-
-        <div class="heading ">
-            <span class="text-red-800 text-[15px]">Tennis </span><span
-                class="line bg-slate-700"></span>
-
-        </div>
-    </div>
-    <div class="relative inline-block text-left w-full">
-        <div class="flex  justify-between p-3 sm:py-3 pl-3 pr-10  w-full">
-            <span class="text-black"> Rubriker</span>
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Golf_ball.svg/2048px-Golf_ball.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Golf_ball.svg/2048px-Golf_ball.svg.png"
+                    class="pt-1 pr-1" style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Golf </span>
+            </div>
             <button type="button" (click)="toggleDropdown()">
 
                 <div class="text-black">
@@ -313,29 +907,77 @@
                     <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
                 </div>
             </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> T盲vlingar</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
         <div>
-            <hr>
+
         </div>
         <div *ngIf="isDropdownOpen"
-            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
-            <!-- Dropdown items go here -->
-            <a href="#" class="block  text-sm "> Top News Tennis</a>
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[250px]     bg-white ">
 
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Golf_ball.svg/2048px-Golf_ball.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Golf_ball.svg/2048px-Golf_ball.svg.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]"> Top News Internationellt </span>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <div class="text-black ">
-
-        <div class="heading ">
-            <span class="text-red-800 text-[15px]">Radiosport </span><span
-                class="line bg-slate-700"></span>
-
-        </div>
-    </div>
-    <div class="relative inline-block text-left w-full">
-        <div class="flex p-3 sm:py-3 pl-3 pr-10  w-full justify-between ">
-            <span class="text-black"> Nyheter</span>
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tennis_ball_3.svg/2048px-Tennis_ball_3.svg.png"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tennis_ball_3.svg/2048px-Tennis_ball_3.svg.png"
+                    class="pt-1 pr-1" style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Tennis </span>
+            </div>
             <button type="button" (click)="toggleDropdown()">
 
                 <div class="text-black">
@@ -345,33 +987,263 @@
                     <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
                 </div>
             </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> Rubriker</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
         <div>
-            <hr>
+
         </div>
         <div *ngIf="isDropdownOpen"
-            class="relative dropdown w-full right-0 mt-2 space-y-2 pl-0 bg-white ">
-            <!-- Dropdown items go here -->
-            <a href="#" class="block  text-sm "> Radiosporten</a>
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[250px]     bg-white ">
 
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tennis_ball_3.svg/2048px-Tennis_ball_3.svg.png"
+                        alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tennis_ball_3.svg/2048px-Tennis_ball_3.svg.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]"> Top News Tennis </span>
+                </li>
+
+            </ul>
         </div>
     </div>
-    <div class="text-black  ">
+    <div class="relative inline-block mt-3 w-full">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5 w-full ">
+            <div class="flex">
+                <img
+                    alt="https://p7.hiclipart.com/preview/582/312/1002/radio-icon-radio-png.jpg"
+                    src="https://p7.hiclipart.com/preview/582/312/1002/radio-icon-radio-png.jpg"
+                    class="pt-1 pr-1"
+                    style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Radiosport </span>
+            </div>
+            <button type="button" (click)="toggleDropdown()">
 
-        <div class="heading mb-3 ">
-            <span class="text-red-800 text-[15px] heading-text">Setting
-            </span><span class="line bg-slate-700"></span>
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-5 text-[13px]  w-[265px]">
+            <span class="text-black "> Nyheter</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
 
         </div>
+        <div>
+
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://seeklogo.com/images/S/sverigesradio-1957-logo-A2AF0D0425-seeklogo.com.png"
+                        alt="https://seeklogo.com/images/S/sverigesradio-1957-logo-A2AF0D0425-seeklogo.com.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]"> Radiosporten </span>
+                </li>
+
+            </ul>
+        </div>
     </div>
-    <div class="flex justify-between mt-4 ">
-        <p>Color palette</p>
-        <label class="relative inline-flex items-center me-5 cursor-pointer">
-            <input type="checkbox" value class="sr-only peer"
-                (click)="toggleDarkMode()">
-            <div
-                class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
-        </label>
+    <div class="relative inline-block mt-1 w-full ">
+        <div class="flex  justify-between  p-3 sm:py-1 pl-3 px-5  w-full ">
+            <div class="flex">
+                <img alt="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                    src="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                    class="pt-1 pr-1"
+                    style="height: 16px; width: 17px;">
+                <span class=" text-[15px]">Handboll </span>
+            </div>
+            <button type="button" (click)="toggleDropdown()">
+
+                <div class="text-black">
+
+                    <i class="fa-solid fa-chevron-down"
+                        *ngIf="!isDropdownOpen"></i>
+                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                </div>
+            </button>
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class="flex  justify-between  p-5 sm:py-2 pl-5 pr-3 text-[13px]  w-[265px]">
+            <span class="text-black "> Nyheter</span>
+            <div>
+                <div class=" flex">
+                    <span class="bg-[#fde42f] p-1 rounded-lg text-[10px]">mina
+                        Rubriker</span>
+                    <button type="button" class="ml-2"
+                        (click)="toggleDropdown()">
+
+                        <div class="text-black">
+
+                            <i class="fa-solid fa-chevron-down"
+                                *ngIf="!isDropdownOpen"></i>
+                            <i class="fa-solid fa-angle-up"
+                                *ngIf="isDropdownOpen"></i>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+        <div>
+
+        </div>
+        <div *ngIf="isDropdownOpen"
+            class=" p-5 sm:py-2 pl-5 pr-5 w-[265px]     bg-white ">
+
+            <ul class="   p-1">
+                <li class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                        alt="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]"> Handboll Damer </span>
+                </li> <li
+                    class="mb-2 bg-[#E8E8E8] p-2 rounded-md space-x-1 flex">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center  rounded-full cursor-pointer"
+                            htmlFor="customStyle">
+                            <input type="checkbox"
+                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                id="customStyle" />
+                            <span
+                                class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3 w-3" viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor" stroke-width="1">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <img
+                        src="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                        alt="https://pngfre.com/wp-content/uploads/Handball-9.png"
+                        class="w-4 h-4 pt-0.5">
+                    <span class=" text-[12px]">Handboll Herrar </span>
+                </li>
+            </ul>
+        </div>
     </div>
+
+</div>
+<div class="flex justify-between mt-4 ">
+    <p>Color palette</p>
+    <label class="relative inline-flex items-center me-5 cursor-pointer">
+        <input type="checkbox" value class="sr-only peer"
+            (click)="toggleDarkMode()">
+        <div
+            class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+    </label>
 </div>
