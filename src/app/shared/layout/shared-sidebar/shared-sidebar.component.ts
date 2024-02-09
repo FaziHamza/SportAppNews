@@ -1,7 +1,6 @@
-import { Component, HostBinding, effect, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../theme-service.service';
-import { json } from 'stream/consumers';
 
 @Component({
   selector: 'app-shared-sidebar',
@@ -12,28 +11,25 @@ import { json } from 'stream/consumers';
 })
 export class SharedSidebarComponent {
 
+  @Input() open?: boolean;
   constructor(private themeService: ThemeService) {
-  }
-
-  toggleDarkMode(): void {
-    this.themeService.toggleDarkMode();
   }
   isDropdownOpen: boolean = false;
 
-  // toggleTheme(): void {
-  //   this.themeService.toggleTheme();
-  // }
+  hide: boolean = false
 
-  // getCurrentTheme(): string {
-  //   return this.themeService.getCurrentTheme();
-  // }
-  // isSidebarHidden: boolean = false;
-  // openSidebr() {
-  //   this.isSidebarHidden = !this.isSidebarHidden;
-  // }
-
+  toggleDisplay() {
+    this.hide = !this.hide
+  }
+  toggleDarkMode(): void {
+    this.themeService.toggleDarkMode();
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeSidebar() {
+
   }
 }
