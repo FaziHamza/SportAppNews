@@ -1,7 +1,7 @@
 <div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
     <!-- desktop body  -->
     <a _ngcontent-ng-c3952649744="" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5" class="dark:text-white text-black decoration-none"></a>
-    <ng-container  *ngFor="let item of newsData">
+    <ng-container  >
 
    
     <div class="px-5 py-10 max-w-[1180px] mx-auto" >
@@ -12,7 +12,7 @@
                         <div class="flex justify-between items-center font-semibold mb-2 text-xl">
                            
                             <div class="flex items-center p-1">
-                                <h2 class="truncate">{{item._title}}
+                                <h2 class="truncate">
                                 </h2>
                             </div>
                             <div class="flex gap-x-1 items-center">
@@ -22,7 +22,7 @@
                         <div class="w-full  rounded-md bg-[#171a1e] dark:text-white text-black flex justify-evenly mb-2.5">
                             <div class="w-full h-auto max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    [src]="item._medias[1].href"
+                                    [src]=""
                                     alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
                             </div>
                         </div>
@@ -51,8 +51,8 @@
                     </div>
                     <!-- Text Area -->
                     <div class="font-source-sans-3 dark:text-white text-black mt-3">
-                        <p><strong>{{ item._abstract}}</strong></p>
-                        <p class="mt-6">{{item._content}}</p>
+                        <p><strong></strong></p>
+                        <p class="mt-6"></p>
 
                         <!-- video area -->
                         <p class="mt-6">Se klippet nedan med uppfödarna (engelska).</p>
@@ -62,7 +62,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen="" _idm_id_="3137537"></iframe>
 
-                            <p class="mt-6"> {{item._Creator}} </p>
+                            <p class="mt-6"> </p>
                             <p>camilla.larssonsportblitznews.com</p>
                             
                         </div>
