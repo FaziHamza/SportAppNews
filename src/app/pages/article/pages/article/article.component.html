@@ -213,7 +213,7 @@
                     <a class="dark:text-white decoration-none text-black"
                         href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
 
-                        <div
+                        <!-- <div
                             class="flex justify-between items-center font-semibold mb-2 text-base">
                             <div class="flex items-center">
                                 <div
@@ -247,7 +247,7 @@
                                             height="20px"><span>Videos</span></div>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div
                             class="w-full p-2.5  bg-white dark:bg-[#010a0f] dark:text-white text-black  mb-2.5">
@@ -255,19 +255,13 @@
                                 class="w-full h-[260px]">
                                 <img
                                     class="w-full object-cover h-[260px] align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
+                                    [src]="firstRecord._medias[1].href">
                             </div>
                             <div
                                 class="w-full  flex flex-col justify-between">
                                 <p
                                     class="overflow-hidden font-source-sans-3  mt-2 font-semibold leading-6 line-clamp-6 text-base">I
-                                    samband med världscuptävlingarna i
-                                    Amsterdam delades Longines WBFSH
-                                    Breeders Awards ut till de tre uppfödare
-                                    som fött upp världens tre högst rankade
-                                    hästar 2023 enligt WBFSH:s rankingsystem
-                                    i respektive gren.</p>
+                                    {{firstRecord._abstract}}</p>
                                 <h6
                                     class="text-[11px] font-medium inline-flex">1
                                     Dag
@@ -280,7 +274,7 @@
                     </a>
 
                 </main>
-
+                <ng-container *ngFor="let item of nextThreeRecords"> 
                 <div class="py-2.5 rounded-lg  bg-[#f5f5f5] dark:bg-[#2d333c]">
                     <a class="text-white decoration-none"
                         href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
@@ -291,19 +285,12 @@
                                 class="w-full">
                                 <img
                                     class="w-3/4 object-cover rounded align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=2fb28591-b3f3-4258-d371-08dc20d7c954"
+                                    [src]="item._medias[1].href"
                                     alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
                             </div>
                             <div
-                                class="w-full px-4 flex flex-col justify-between">
-                                <p
-                                    class="overflow-hidden font-source-sans-3 font-semibold leading-6 line-clamp-6 text-sm">I
-                                    Devanto och Lord Django är i fin form i
-                                    Florida. Tinne Vilhelmsson Silfvén och
-                                    Caroline Darcourt lotsade de båda
-                                    stjärnorna från Lövsta till andra och
-                                    tredje plats i fyrstjärnig Kür i
-                                    Florida. – Django kändes väldigt</p>
+                                class="w-full px-4 flex flex-col justify-between leading-6 line-clamp-6 ">
+                                <p>                                {{item._abstract}}</p>
                                 <h6
                                     class="text-[11px] font-medium inline-flex">1
                                     Dag
@@ -315,70 +302,10 @@
                         </div>
                     </a>
                   
-                    <a class="text-white decoration-none"
-                        href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
-
-                        <div class="w-full h-30 p-2.5 rounded-md bg-white dark:bg-[#010a0f] dark:text-white text-black flex justify-evenly mb-2.5">
-                            <div
-                                class="w-full">
-                                <img
-                                    class="w-3/4 object-cover rounded align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d5df9705-4178-4563-f84a-08dc1d8a78d4"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
-                            </div>
-                            <div
-                                class="w-full px-4 flex flex-col justify-between">
-                                <p
-                                    class="overflow-hidden font-source-sans-3 font-semibold leading-6 line-clamp-6 text-sm">
-                                    Dags för Amsterdam att stå värd för
-                                    världscupen i både hoppning och dressyr.
-                                    Det blir svenskt deltagande i båda
-                                    diciplinerna. Peder Fredricson startar
-                                    tre hästar, Expression From Second Life,
-                                    H&M</p>
-                                <h6
-                                    class="text-[11px] font-medium inline-flex">1
-                                    Dag
-                                    <img class="h-[20px]"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="text-white decoration-none"
-                        href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
-
-                        <div class="w-full h-30 p-2.5 rounded-md bg-white dark:bg-[#010a0f] dark:text-white text-black flex justify-evenly mb-2.5">
-                            <div
-                                class="w-full">
-                                <img
-                                    class="w-3/4 object-cover rounded align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d5df9705-4178-4563-f84a-08dc1d8a78d4"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
-                            </div>
-                            <div
-                                class="w-full px-4 flex flex-col justify-between">
-                                <p
-                                    class="overflow-hidden font-source-sans-3 font-semibold leading-6 line-clamp-6 text-sm">
-                                    Dags för Amsterdam att stå värd för
-                                    världscupen i både hoppning och dressyr.
-                                    Det blir svenskt deltagande i båda
-                                    diciplinerna. Peder Fredricson startar
-                                    tre hästar, Expression From Second Life,
-                                    H&M</p>
-                                <h6
-                                    class="text-[11px] font-medium inline-flex">1
-                                    Dag
-                                    <img class="h-[20px]"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
+                   
 
                 </div>
+            </ng-container>
             </div>
 
            
