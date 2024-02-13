@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SharedSidebarComponent } from "../shared-sidebar/shared-sidebar.component";
+import { ThemeService } from '../../../theme-service.service';
 
 @Component({
     selector: 'app-shared-header',
@@ -12,9 +13,14 @@ export class SharedHeaderComponent {
 
   @Output() open: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
 
-  openSidebar() {
-    this.open.emit(true);
+
+  // openSidebar() {
+  //   this.open.emit(true);
+  // }
+  constructor(public themeService:ThemeService) { }
+  showSideBar() {
+  
+this.themeService.toggleSideBarFun()
   }
 }

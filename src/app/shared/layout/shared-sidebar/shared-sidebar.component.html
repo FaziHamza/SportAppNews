@@ -1,24 +1,19 @@
 <!-- <button class="w-auto h-auto p-2" (click)="darkMode.set(!darkMode())">click to
     switch</button> -->
 
-<div #sidebar id="sidebar" *ngIf="!hide"
+<div #sidebar id="sidebar" *ngIf="themeService.toggleSideBar"
     class="sidebars border-l-slate-50 transitio-opacity duration-500 ease-in-out fixed top-0 bottom-0 lg:right-0 px-2  lg:w-[325px] w-[325px] overflow-y-auto  text-black dark:text-white  bg-white dark:bg-[#0E1218]">
 
     <div class="text-black  dark:text-white w-full   relative  ">
         <div class="p-2.5   ">
 
-            <i (click)="toggleDisplay()"
+            <i (click)="HideSideBar()"
                 class="fa-solid fa-xmark text-lg absolute right-7   lg:left-4 lg:top-2 w-7 h-7 text-center text-white rounded-2xl bg-red-600 "></i>
 
-            <img
-                src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
-                class="w-32 ml-10" alt>
+            <img src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg" class="w-32 ml-10" alt>
         </div>
-        <div
-            class=" bg-black   rounded-lg flex justify-center h-18 p-3 w-[290px] ml-1 ">
-            <img
-                src="https://www.sportspotsverige.se/V4/Content/TopicLogo/mainlogo.png"
-                class=" w-[85px] h-[50px]" alt>
+        <div class=" bg-black   rounded-lg flex justify-center h-18 p-3 w-[290px] ml-1 ">
+            <img src="https://www.sportspotsverige.se/V4/Content/TopicLogo/mainlogo.png" class=" w-[85px] h-[50px]" alt>
         </div>
         <p class="p-3 text-justify dark:text-white">
             V盲lj dina rubriker fr氓n nedanst氓ende menu. Kryssa i rubriken som du
@@ -28,200 +23,112 @@
 
     </div>
 
-    <div
-        class="relative inline-block mt-3  pb-2 pt-2 ml-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C] ">
+    <ng-container *ngFor="let menu of data  ">
 
-        <div class="flex  justify-between   sm:py-1  pr-6 w-[280px]   ">
-            <div class="flex">
-                <img
-                    alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
-                    class="mr-1 mt-1" style="height: 16px; width: 17px;">
+        <div class="relative inline-block mt-3  pb-1 pt-1 ml-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C] ">
 
-                <span class=" text-[15px]">Hockey </span>
-            </div>
-            <button type="button" (click)="toggleDropdown()">
+            <div class="flex justify-between sm:py-1 pr-6 w-[280px] " (click)="toggleMenu(menu)">
+                <div class="flex">
+                    <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
+                        [src]="menu.heading.mainHeadingLogo" class="mr-1 mt-1" style="height: 16px; width: 17px;">
 
-                <div class="text-black dark:text-white">
-
-                    <i class="fa-solid fa-chevron-down"
-                        *ngIf="!isDropdownOpen"></i>
-                    <i class="fa-solid fa-angle-up" *ngIf="isDropdownOpen"></i>
+                    <span class="text-[15px]">{{menu.heading.mainHeading}}</span>
                 </div>
-            </button>
-        </div>
-        <div *ngIf="isDropdownOpen"
-            class="dark:bg-[#343A40] mt-1  rounded-lg py-2 px-2  bg-white">
-            <div *ngIf="isDropdownOpen"
-                class="flex  justify-between  p-5  sm:py-2   text-[13px]  w-full ">
-                <span class="text-black  dark:text-white"> Rubriker</span>
-                <div>
-                    <div class=" flex">
-                        <span
-                            class="bg-[#fde42f]  p-1 rounded-lg text-[10px]">Mina
-                            Rubriker</span>
-                        <button type="button" class="ml-2"
-                            (click)="toggleDropdown()">
-
-                            <div class="text-black dark:text-white">
-
-                                <i class="fa-solid fa-chevron-down"
-                                    *ngIf="!isDropdownOpen"></i>
-                                <i class="fa-solid fa-angle-up"
-                                    *ngIf="isDropdownOpen"></i>
-                            </div>
-                        </button>
+                <button type="button">
+                    <div class="text-black dark:text-white">
+                        <i class="fa-solid fa-chevron-down" *ngIf="!menu.isOpen"></i>
+                        <i class="fa-solid fa-angle-up" *ngIf="menu.isOpen"></i>
                     </div>
+                </button>
+            </div>
 
+
+            <ng-container *ngFor="let topic of menu.topic">
+                <div class="dark:bg-[#343A40] mt-1  rounded-lg py-1 px-2  bg-white"  *ngIf="menu.isOpen ">
+
+                    <div class="flex  justify-between  p-3  sm:py-2   text-[13px]  w-full "   *ngIf="menu.isOpen ">
+                        <span class="text-black  dark:text-white"> <span></span>{{topic.name}}</span>
+                        <div>
+                            <div class=" flex" (click)="toggleDropdown(topic)">
+                                <span class="bg-[#fde42f]  p-1 rounded-lg text-[10px]">{{topic.actionBar}}</span>
+                                <button type="button" class="ml-2">
+
+                                    <div class="text-black dark:text-white">
+
+                                        <i class="fa-solid fa-chevron-down" *ngIf="!topic.isOpen"></i>
+                                        <i class="fa-solid fa-angle-up" *ngIf="topic.isOpen"></i>
+                                    </div>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div *ngIf="topic.isOpen">
+
+                        <ng-container *ngFor="let data of getSubTopics(menu.subTopics,topic)" >
+                            <div class="   w-full " *ngIf="topic.isOpen" >
+                                
+                         
+                            <ul class="p-1">
+                                <li class=" bg-[#E8E8E8]  dark:bg-[#2D333C] p-2 rounded-md flex space-x-1 ">
+                                    <div class="inline-flex items-center">
+                                        <label class="relative flex items-center  rounded-full cursor-pointer"
+                                            htmlFor="customStyle">
+                                            <input type="checkbox"
+                                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                                id="customStyle" />
+                                            <span
+                                                class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20"
+                                                    fill="currentColor" stroke="currentColor" stroke-width="1">
+                                                    <path fill-rule="evenodd"
+                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                            </span>
+                                        </label>
+                                    </div>
+                                   
+                                    <img [src]="data.logo"
+                                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
+                                        class="h-4 w-4 mt-0.5">
+                                        <a [routerLink]="['news', data.keyword]" routerLinkActive="router-link-active" class="text-[13px]" (click)="getNews(data.keyword)">{{data.name}}</a>
+
+                                </li>
+    
+                            </ul>
+                        </div>
+                    </ng-container>
                 </div>
-
             </div>
+                </ng-container>
 
-            <div *ngIf="isDropdownOpen" class="  sm:py-2  w-full  ">
 
-                <ul class="   p-1">
-                    <li
-                        class="mb-2 bg-[#E8E8E8]  dark:bg-[#2D333C] p-2 rounded-md flex space-x-1 ">
-                        <div class="inline-flex items-center">
-                            <label
-                                class="relative flex items-center  rounded-full cursor-pointer"
-                                htmlFor="customStyle">
-                                <input type="checkbox" checked="checked"
-                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                    id="customStyle" />
-                                <span
-                                    class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div><img
-                            src="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
-                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
-                            class="h-4 w-4 mt-0.5">
-                        <span class=" text-[13px] ">Leksand</span>
-                    </li>
-                    <li
-                        class="mb-2 bg-[#E8E8E8] dark:bg-[#2D333C] p-2 rounded-md flex  space-x-1 ">
-                        <div class="inline-flex items-center">
-                            <label
-                                class="relative flex items-center  rounded-full cursor-pointer"
-                                htmlFor="customStyle">
-                                <input type="checkbox" checked="checked"
-                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                    id="customStyle" />
-                                <span
-                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div><img
-                            src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Timra_IK_logo.svg/1200px-Timra_IK_logo.svg.png"
-                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Timra_IK_logo.svg/1200px-Timra_IK_logo.svg.png"
-                            class="h-4 w-4 mt-0.5">
-                        <span class=" text-[12px] ">Timr氓</span>
-                    </li>
-                    <li
-                        class="mb-2 bg-[#E8E8E8] dark:bg-[#2D333C] p-2 rounded-md flex  space-x-1 ">
-                        <div class="inline-flex items-center">
-                            <label
-                                class="relative flex items-center  rounded-full cursor-pointer"
-                                htmlFor="customStyle">
-                                <input type="checkbox" checked="checked"
-                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                    id="customStyle" />
-                                <span
-                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div><img
-                            src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rogle_BK_logo.svg/800px-Rogle_BK_logo.svg.png"
-                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rogle_BK_logo.svg/800px-Rogle_BK_logo.svg.png"
-                            class="h-4 w-4 mt-0.5">
-                        <span class=" text-[12px]">R枚gle</span>
-                    </li>
-                    <li
-                        class="mb-2 bg-[#E8E8E8] dark:bg-[#2D333C] p-2 rounded-md flex space-x-1">
-                        <div class="inline-flex items-center">
-                            <label
-                                class="relative flex items-center  rounded-full cursor-pointer"
-                                htmlFor="customStyle">
-                                <input type="checkbox"
-                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                    id="customStyle" />
-                                <span
-                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Swedish_Hockey_League_logo.svg/1200px-Swedish_Hockey_League_logo.svg.png"
-                            alt="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Swedish_Hockey_League_logo.svg/1200px-Swedish_Hockey_League_logo.svg.png"
-                            class="h-5 w-6 ">
-                        <span class=" text-[12px]">SHL</span>
-                    </li>
-                    <li
-                        class="mb-2 bg-[#E8E8E8] dark:bg-[#2D333C] p-2 rounded-md space-x-1 flex">
-                        <div class="inline-flex items-center">
-                            <label
-                                class="relative flex items-center  rounded-full cursor-pointer"
-                                htmlFor="customStyle">
-                                <input type="checkbox"
-                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                    id="customStyle" />
-                                <span
-                                    class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/1200px-05_NHL_Shield.svg.png"
-                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/1200px-05_NHL_Shield.svg.png"
-                            class="h-4 w-4 mt-0.5">
-                        <span class=" text-[12px]">NHL</span>
-                    </li>
-                </ul>
-            </div>
+
+            
+
+
+
         </div>
+
+
+    </ng-container>
+    <div class="flex justify-between mt-32">
+        <p>Color palette</p>
+        <label class="relative inline-flex items-center me-5 cursor-pointer">
+            <input type="checkbox" value class="sr-only peer" (click)="toggleDarkMode()">
+            <div
+                class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600">
+            </div>
+        </label>
     </div>
-    <div
+
+</div>
+
+
+
+
+<!-- <div
         class="relative inline-block mt-3  pb-2 pt-2 ml-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C]">
         <div class="flex  justify-between   sm:py-1  pr-6 w-[280px] ">
             <div class="flex">
@@ -1298,15 +1205,4 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="flex justify-between mt-32">
-        <p>Color palette</p>
-        <label class="relative inline-flex items-center me-5 cursor-pointer">
-            <input type="checkbox" value class="sr-only peer"
-                (click)="toggleDarkMode()">
-            <div
-                class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600">
-            </div>
-        </label>
-    </div>
-</div>
+    </div> -->

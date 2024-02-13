@@ -27,7 +27,7 @@ export class AppComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      debugger
+      // debugger
       // Determine the OG image based on the event.url
       // Example: 
       let ogImageUrl = '';

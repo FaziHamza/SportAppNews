@@ -15,5 +15,9 @@ export class ThemeService {
     this.modeSubject.next(newDarkModeValue);
     // window.localStorage.setItem('darkMode', JSON.stringify(newDarkModeValue));
   }
+  toggleSideBar:boolean=false;  
+    toggleSideBarFun(){
+    this.toggleSideBar=!this.toggleSideBar
+      }
   
 }

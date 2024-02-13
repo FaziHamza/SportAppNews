@@ -1,14 +1,18 @@
 <div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
     <!-- desktop body  -->
     <a _ngcontent-ng-c3952649744="" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5" class="dark:text-white text-black decoration-none"></a>
-    <div class="px-5 py-10 max-w-[1180px] mx-auto">
+    <ng-container  *ngFor="let item of newsData">
+
+   
+    <div class="px-5 py-10 max-w-[1180px] mx-auto" >
         <div class="flex flex-wrap w-full">
             <div class="w-2/3 px-2">
                 <main class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] dark:bg-[#2d333c]">
                     <a class="dark:text-white text-black decoration-none" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
                         <div class="flex justify-between items-center font-semibold mb-2 text-xl">
+                           
                             <div class="flex items-center p-1">
-                                <h2>Prisade uppfödare delar med sig sina tankar om avel.
+                                <h2 class="truncate">{{item._title}}
                                 </h2>
                             </div>
                             <div class="flex gap-x-1 items-center">
@@ -18,7 +22,7 @@
                         <div class="w-full  rounded-md bg-[#171a1e] dark:text-white text-black flex justify-evenly mb-2.5">
                             <div class="w-full h-auto max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5"
+                                    [src]="item._medias[1].href"
                                     alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
                             </div>
                         </div>
@@ -47,20 +51,8 @@
                     </div>
                     <!-- Text Area -->
                     <div class="font-source-sans-3 dark:text-white text-black mt-3">
-                        <p><strong>I samband med världscuptävlingarna i Amsterdam delades Longines WBFSH Breeders Awards
-                                ut till de tre uppfödare som fött upp världens tre högst rankade hästar 2023 enligt
-                                WBFSH:s rankingsystem i respektive gren.</strong></p>
-                        <p class="mt-6">I dressyr delades priset ut postumt till uppfödaren av TSF Dalera BB ( TRAK sto
-                            f-07 e Easy
-                            game-Handryk) Silke Drückenmüller. Dalera har tillsammans med sin ryttare, nuvarande
-                            världsettan Jessica von Bredow-Werndl vunnit det mesta som går att vinna de senaste åren.
-                            Detta blir tredje året i rad som priset delades ut till Silke.
-                        </p>
-                        <p class="mt-6">Susana Epaillard Garcia Cereda prisades i hoppning för sin stjärna Donatello
-                            d'Auge (SF val f-13 e: Jarnac-Hello Pierville). Donatello d'Auge rids av franske Julien
-                            Epaillard. Susana berättar bland annat att hon har väntat i 25 år på en häst som denna.</p>
-                        <p class="mt-6">I fälttävlan tog Andre Jurrius uppfödning Galileo Nieuwmoed (KWPN hingst f -11 e
-                            Carambole - Harcos) hem priset. Hingsten tävlas av David Dole, Storbrittanien.</p>
+                        <p><strong>{{ item._abstract}}</strong></p>
+                        <p class="mt-6">{{item._content}}</p>
 
                         <!-- video area -->
                         <p class="mt-6">Se klippet nedan med uppfödarna (engelska).</p>
@@ -70,7 +62,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen="" _idm_id_="3137537"></iframe>
 
-                            <p class="mt-6">Camilla Larsson</p>
+                            <p class="mt-6"> {{item._Creator}} </p>
                             <p>camilla.larssonsportblitznews.com</p>
                             
                         </div>
@@ -220,6 +212,7 @@
             </div>
         </div>
     </div>
+</ng-container>
 </div>
 
 <!-- Mobile View -->
