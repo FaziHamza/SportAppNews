@@ -1,45 +1,46 @@
-<div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
+
+<div class="bg-[#cccccc] hidden md:block">
     <!-- desktop body  -->
-    <a _ngcontent-ng-c3952649744="" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5" class="dark:text-white text-black decoration-none"></a>
-    <ng-container  >
+   
+   
 
    
-    <div class="px-5 py-10 max-w-[1180px] mx-auto" >
-        <div class="flex flex-wrap w-full">
-            <div class="w-2/3 px-2">
-                <main class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] dark:bg-[#2d333c]">
-                    <a class="dark:text-white text-black decoration-none" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
+  
+                <main class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] ">
+                    
                         <div class="flex justify-between items-center font-semibold mb-2 text-xl">
                            
-                            <div class="flex items-center p-1">
+                            <div class="flex items-center p-1 text-black">
                                 <h2 class="truncate">
+                                 {{articleDetails._title}}
                                 </h2>
                             </div>
                             <div class="flex gap-x-1 items-center">
-                                <a href=""><i class="fa-solid fa-xmark dark:text-white text-black"></i></a>
+                                <a [routerLink]="['/news', api.keyword]" routerLinkActive="router-link-active"  ><i class="fa-solid fa-xmark  text-black"></i></a>
                             </div>
                         </div>
-                        <div class="w-full  rounded-md bg-[#171a1e] dark:text-white text-black flex justify-evenly mb-2.5">
-                            <div class="w-full h-auto max-h-[350px]">
+                        <div class="w-full  rounded-md   text-black flex justify-evenly mb-2.5">
+                            <div class="w-full h-auto  max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    [src]=""
+                                    [src]="articleDetails._medias[1].href"
                                     alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
                             </div>
                         </div>
-                    </a>
+                  
                     <div class="flex justify-between items-center font-semibold mb-2 text-base">
-                        <div class="flex items-center">
-                            <div class="mr-2.5 capitalize border-gray-300 flex flex-row">
-                                <h6 class="text-[11px] m-0 inline-flex dark:text-white text-black">
-                                    1 Dag
-                                    <img class="h-5 mt-1"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
+                    
+                            <div class="mr-2.5 capitalize border-gray-300 flex  justify-between w-full">
+                               <div> <h6 class="text-[11px] m-0  flex flex-row  text-black">
+                                1 Dag
+                                <img class="h-5 mt-1"
+                                    src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
+                                    alt>
+                            </h6></div>
+                                <p class=" text-black text-[10px] " >Foto:{{articleDetails._Creator }}</p>
                             </div>
-                        </div>
+                        
                         <div class="flex gap-x-1 items-center">
-                            <a class="decoration-none dark:text-white text-black cursor-pointer" href="/videohighlights">
+                            <a class="decoration-none  text-black cursor-pointer" href="/videohighlights">
                                 <div>
                                     <img class="h-7" src="https://sportatsite.com/assets/video_play-ce09441d.png"
                                         height="20px">
@@ -50,20 +51,16 @@
                     <div class="border border-slate-300 border-solid border-1 mt-6">
                     </div>
                     <!-- Text Area -->
-                    <div class="font-source-sans-3 dark:text-white text-black mt-3">
-                        <p><strong></strong></p>
-                        <p class="mt-6"></p>
+                    <div class="font-source-sans-3  p-2 text-black mt-5 shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)]">
+                        <!-- <p>{{articleDetails._abstract}} </p> -->
+                        <div class="mt-3" [innerHTML]="sanitizedContent"></div>
+
 
                         <!-- video area -->
-                        <p class="mt-6">Se klippet nedan med uppfödarna (engelska).</p>
-                        <iframe width="295px" height="195px"
-                            src="https://www.youtube.com/embed/XyzcEIDWPLU?si=6IIVn5kgc9-Q8Jtl"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen="" _idm_id_="3137537"></iframe>
+                        
+                       
 
-                            <p class="mt-6"> </p>
-                            <p>camilla.larssonsportblitznews.com</p>
+                           
                             
                         </div>
 
@@ -71,190 +68,54 @@
                 </main>
 
 
-            </div>
 
 
-            <div class="w-1/3 px-2">
-                <div class="block w-full">
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href>
-                        <div class="w-full p-2.5 rounded-md flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
-                            <div class="w-3/4 ">
-                                <img class="w-full h-full object-cover rounded-md"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb"
-                                    alt>
-                            </div>
-                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p class="text-xs  leading-20 font-source-sans-3 overflow-ellipsis mb-1">
-                                    Det verkar som Charlotte Dujardin hittat
-                                    efterträdaren till sin älskade Valegro,
-                                    han heter Imhotep men kallas Pete till
-                                </p>
-                                <h6 class="text-[11px] m-0 inline-flex">
-                                    9 Dag
-                                    <img class="h-5"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+         
             </div>
-        </div>
-    </div>
-</ng-container>
-</div>
+       
 
 <!-- Mobile View -->
-<div class="bg-[#cccccc] dark:bg-[#010a0f] block md:hidden">
+<div class="bg-[#cccccc]  block md:hidden">
     <!-- mobile body  -->
     <div class="max-w-[1180px] mx-auto">
         <div class="flex flex-wrap w-full">
             <div class="w-full px-2">
                 <div class="flex justify-between items-center font-semibold mb-1 text-lg">
                     <div class="flex items-center">
-                        <h2 class="dark:text-white text-black">Prisade uppfödare delar med sig sina tankar om avel.</h2>
+                        <h2 class=" text-black">
+                            {{articleDetails._title}}
+                        </h2>
                     </div>
-                    <div class="flex gap-x-1 items-center ">
-                        <a href=""><i class="fa-solid fa-xmark dark:text-white text-black "></i></a>
-                    </div>
+                   
                 </div>
-                <main class="p-2 lg:mb-4 bg-white dark:bg-[#171a1e]">
-                    <a class="dark:text-white text-black decoration-none" href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
+                <main class="p-2 lg:mb-4 bg-white ">
+                    
                         
-                        <div class="w-full  rounded-md bg-[#171a1e] dark:text-white text-black flex justify-evenly mb-2.5">
+                        <div class="w-full  rounded-md   text-black flex justify-evenly mb-2.5">
                             <div class="w-full h-auto max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
+                                    [src]="articleDetails._medias[1].href">
                             </div>
                         </div>
-                    </a>
+                   
                     <div class="flex justify-between items-center font-semibold mb-2 text-base">
-                        <div class="flex items-center">
-                            <div class="mr-2.5 capitalize border-gray-300 flex flex-row">
-                                <h6 class="text-[9px] m-0 inline-flex dark:text-white text-black">
-                                    2 Dag
-                                    <img class="h-5 mt-1"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt>
-                                </h6>
-                            </div>
-                        </div>
-                        <div class="flex gap-x-1 items-center">
-                            <a class="decoration-none dark:text-white text-black cursor-pointer" href="/videohighlights">
+                       
+                            <div class="mr-2.5 capitalize border-gray-300 flex  justify-between w-full">
                                 <div>
-                                    <img class="h-7" src="https://sportatsite.com/assets/video_play-ce09441d.png"
+                                    <h6 class="text-[9px] m-0  flex flex-row  text-black">
+                                        2 Dag
+                                        <img class="h-5 mt-1"
+                                            src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
+                                            alt>
+                                    </h6>
+                                </div>
+                                <p class=" text-black text-[10px] " >Foto:{{articleDetails._Creator }}</p>
+                            </div>
+                       
+                        <div class="flex gap-x-1 items-center">
+                            <a class="decoration-none  text-black cursor-pointer" href="/videohighlights">
+                                <div>
+                                    <img class="h-7" src=""
                                         height="20px">
                                 </div>
                             </a>
@@ -263,33 +124,10 @@
                     <div class="border border-slate-300 border-solid border-1 mt-6">
                     </div>
                     <!-- Text Area -->
-                    <div class="font-source-sans-3 dark:text-white text-black mt-3">
-                        <p class="text-sm"><strong>I samband med världscuptävlingarna i Amsterdam delades Longines WBFSH Breeders Awards
-                                ut till de tre uppfödare som fött upp världens tre högst rankade hästar 2023 enligt
-                                WBFSH:s rankingsystem i respektive gren.</strong></p>
-                        <p class="mt-6 text-sm">I dressyr delades priset ut postumt till uppfödaren av TSF Dalera BB ( TRAK sto
-                            f-07 e Easy
-                            game-Handryk) Silke Drückenmüller. Dalera har tillsammans med sin ryttare, nuvarande
-                            världsettan Jessica von Bredow-Werndl vunnit det mesta som går att vinna de senaste åren.
-                            Detta blir tredje året i rad som priset delades ut till Silke.
-                        </p>
-                        <p class="mt-6 text-sm">Susana Epaillard Garcia Cereda prisades i hoppning för sin stjärna Donatello
-                            d'Auge (SF val f-13 e: Jarnac-Hello Pierville). Donatello d'Auge rids av franske Julien
-                            Epaillard. Susana berättar bland annat att hon har väntat i 25 år på en häst som denna.</p>
-                        <p class="mt-6 text-sm">I fälttävlan tog Andre Jurrius uppfödning Galileo Nieuwmoed (KWPN hingst f -11 e
-                            Carambole - Harcos) hem priset. Hingsten tävlas av David Dole, Storbrittanien.</p>
-
-                        <!-- video area -->
-                        <p class="mt-6">Se klippet nedan med uppfödarna (engelska).</p>
-                        <iframe width="295px" height="195px"
-                            src="https://www.youtube.com/embed/XyzcEIDWPLU?si=6IIVn5kgc9-Q8Jtl"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen="" _idm_id_="3137537"></iframe>
-
-                            <p class="mt-6">Camilla Larsson</p>
-                            <p>camilla.larssonsportblitznews.com</p>
-                            
+                    <div class="font-source-sans-3  text-black mt-5">
+                   
+                        <!-- <p>{{articleDetails._abstract}} </p> -->
+                        <div [innerHTML]="sanitizedContent"></div>
                         </div>
 
 

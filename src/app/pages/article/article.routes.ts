@@ -17,8 +17,9 @@ export const articleRoutes: Routes = [
                 title: "Article",
                 component: ArticleComponent,  // child route component that the router renders
             },
+         
             {
-                path: 'news',  // child route path with dynamic parameter
+                path: 'news/:keyword/:id',  // child route path with dynamic parameter
                 title: "ArticleDetail",
                 component: ArticleDetailComponent,  // child route component that the router renders
             },

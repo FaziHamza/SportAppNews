@@ -9,18 +9,19 @@ export class ApiService {
   baseurl = 'https://sportifiedspot.com';
   newsBaseUrl='https://www.sportspotsverige.se/'
   constructor(private http: HttpClient) { }
-
+keyword:any
  
-  getRegin(): Observable<any>{
-    return this.http.get(this.baseurl + '/api/Region/GetRegion');
+  // getRegin(): Observable<any>{
+  //   return this.http.get(this.baseurl + '/api/Region/GetRegion');
 
-  }
+  // }
   getNews(keyword: string): Observable<any> {
     const url = `${this.newsBaseUrl}/V4/api/news/getNewsByTeam?keyword=${keyword}&lang=sv&sport=football&limit=12`;
-   
+   this.keyword=keyword;
     
     return this.http.get(url);
   }
+ 
   GetTopicWithSubTopic(): Observable<any>{
   
     return this.http.get(this.baseurl + `//api/Topic/GetTopicWithSubTopic?regionId=fc72efe0-7ba9-49bf-95a5-08dbd95a31db`)
