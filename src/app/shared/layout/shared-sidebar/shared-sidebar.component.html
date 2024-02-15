@@ -4,59 +4,85 @@
 <div #sidebar id="sidebar" *ngIf="themeService.toggleSideBar"
     class="sidebars border-l-slate-50 transitio-opacity duration-500 ease-in-out fixed top-0 bottom-0 lg:right-0 px-2  lg:w-[325px] w-[325px] overflow-y-auto  text-black dark:text-white  bg-white dark:bg-[#0E1218]">
 
-    <div class="text-black  dark:text-white w-full   relative  ">
-        <div class="p-2.5   ">
+    <div class="text-black dark:text-white w-full relative">
+        <!-- desktop case header -->
+        <div class="p-2.5 hidden lg:block w-full flex flex-row justify-between">
+            <i (click)="HideSideBar()"
+                class="fa-solid fa-xmark text-lg w-7 h-7 text-center text-white rounded-2xl bg-red-600 "></i>
+            <img
+                src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
+                class="w-32" alt>
+        </div>
+
+        <!-- mobile case header -->
+        <div class="p-2.5 block lg:hidden w-full flex flex-row justify-between">
+            <img
+                src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
+                class="w-32" alt>
 
             <i (click)="HideSideBar()"
-                class="fa-solid fa-xmark text-lg absolute right-7   lg:left-4 lg:top-2 w-7 h-7 text-center text-white rounded-2xl bg-red-600 "></i>
+                class="fa-solid fa-xmark text-lg w-7 h-7 text-center text-white rounded-2xl bg-red-600 "></i>
+        </div>
 
-            <img src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg" class="w-32 ml-10" alt>
+        <div
+            class=" bg-black rounded-lg flex justify-center items-center h-14 w-[290px] ml-1">
+            <img
+                src="https://www.sportspotsverige.se/V4/Content/TopicLogo/mainlogo.png"
+                class=" w-[63px] h-[35px]" alt>
         </div>
-        <div class=" bg-black   rounded-lg flex justify-center h-18 p-3 w-[290px] ml-1 ">
-            <img src="https://www.sportspotsverige.se/V4/Content/TopicLogo/mainlogo.png" class=" w-[85px] h-[50px]" alt>
-        </div>
-        <p class="p-3 text-justify dark:text-white">
-            V盲lj dina rubriker fr氓n nedanst氓ende menu. Kryssa i rubriken som du
-            vill spara den tillsvidare i annat fall klicka
-            p氓 rubriken f枚r att se nyheterna:
+        <p class="p-3 text-justify text-sm font-medium dark:text-white">
+            Välj senaste nytt, för det du önskar nyheter om, från nedanstående meny:
         </p>
 
     </div>
 
-    <ng-container *ngFor="let menu of data  ">
+    <ng-container *ngFor="let menu of data">
 
-        <div class="relative inline-block mt-3  pb-1 pt-1 ml-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C] ">
+        <div
+            class="relative inline-block mt-3 ml-2 py-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C] ">
 
-            <div class="flex justify-between sm:py-1 pr-6 w-[280px] " (click)="toggleMenu(menu)">
+            <div class="flex justify-between sm:py-1 pr-6 w-[280px] "
+                (click)="toggleMenu(menu)">
                 <div class="flex">
-                    <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
-                        [src]="menu.heading.mainHeadingLogo" class="mr-1 mt-1" style="height: 16px; width: 17px;">
+                    <img
+                        alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ice_hockey_puck.svg/2048px-Ice_hockey_puck.svg.png"
+                        [src]="menu.heading.mainHeadingLogo" class="mr-1 mt-1"
+                        style="height: 16px; width: 17px;">
 
-                    <span class="text-[15px]">{{menu.heading.mainHeading}}</span>
+                    <span
+                        class="text-[15px]">{{menu.heading.mainHeading}}</span>
                 </div>
                 <button type="button">
                     <div class="text-black dark:text-white">
-                        <i class="fa-solid fa-chevron-down" *ngIf="!menu.isOpen"></i>
-                        <i class="fa-solid fa-angle-up" *ngIf="menu.isOpen"></i>
+                        <i class="fa-solid fa-chevron-up"
+                            *ngIf="!menu.isOpen"></i>
+                        <i class="fa-solid fa-angle-down" *ngIf="menu.isOpen"></i>
                     </div>
                 </button>
             </div>
 
-
             <ng-container *ngFor="let topic of menu.topic">
-                <div class="dark:bg-[#343A40] mt-1  rounded-lg py-1 px-2  bg-white"  *ngIf="menu.isOpen ">
+                <div
+                    class="dark:bg-[#343A40] mt-1  rounded-lg py-1 px-2 bg-white"
+                    *ngIf="menu.isOpen ">
 
-                    <div class="flex  justify-between  p-3  sm:py-2   text-[13px]  w-full "   *ngIf="menu.isOpen ">
-                        <span class="text-black  dark:text-white"> <span></span>{{topic.name}}</span>
+                    <div
+                        class="flex  justify-between p-3 sm:py-2 text-[13px]  w-full "
+                        *ngIf="menu.isOpen ">
+                        <span class="text-black  dark:text-white">
+                            <span></span>{{topic.name}}</span>
                         <div>
                             <div class=" flex" (click)="toggleDropdown(topic)">
-                                <span class="bg-[#fde42f]  p-1 rounded-lg text-[10px]">{{topic.actionBar}}</span>
+                                <span
+                                    class="bg-[#fde42f]  p-1 rounded-lg text-[10px]">{{topic.actionBar}}</span>
                                 <button type="button" class="ml-2">
 
                                     <div class="text-black dark:text-white">
 
-                                        <i class="fa-solid fa-chevron-down" *ngIf="!topic.isOpen"></i>
-                                        <i class="fa-solid fa-angle-up" *ngIf="topic.isOpen"></i>
+                                        <i class="fa-solid fa-chevron-up"
+                                            *ngIf="!topic.isOpen"></i>
+                                        <i class="fa-solid fa-angle-down"
+                                            *ngIf="topic.isOpen"></i>
                                     </div>
                                 </button>
                             </div>
@@ -65,58 +91,62 @@
                     </div>
                     <div *ngIf="topic.isOpen">
 
-                        <ng-container *ngFor="let data of getSubTopics(menu.subTopics,topic)" >
-                            <div class="   w-full " *ngIf="topic.isOpen" >
-                                
-                         
-                            <ul class="p-1">
-                                <li class=" bg-[#E8E8E8]  dark:bg-[#2D333C] p-2 rounded-md flex space-x-1 ">
-                                    <div class="inline-flex items-center">
-                                        <label class="relative flex items-center  rounded-full cursor-pointer"
-                                            htmlFor="customStyle">
-                                            <input type="checkbox"
-                                                class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
-                                                id="customStyle" />
-                                            <span
-                                                class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20"
-                                                    fill="currentColor" stroke="currentColor" stroke-width="1">
-                                                    <path fill-rule="evenodd"
-                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                            </span>
-                                        </label>
-                                    </div>
-                                   
-                                    <img [src]="data.logo"
-                                        alt="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
-                                        class="h-4 w-4 mt-0.5">
-                                        <a [routerLink]="['news', data.keyword]" routerLinkActive="router-link-active" class="text-[13px]" (click)="getNews(data.keyword)">{{data.name}}</a>
+                        <ng-container
+                            *ngFor="let data of getSubTopics(menu.subTopics,topic)">
+                            <div class="   w-full " *ngIf="topic.isOpen">
 
-                                </li>
-    
-                            </ul>
-                        </div>
-                    </ng-container>
+                                <ul class="p-1">
+                                    <li
+                                        class=" bg-[#E8E8E8]  dark:bg-[#2D333C] p-2 rounded-md flex space-x-1 ">
+                                        <div class="inline-flex items-center">
+                                            <label
+                                                class="relative flex items-center  rounded-full cursor-pointer"
+                                                htmlFor="customStyle">
+                                                <input type="checkbox"
+                                                    class="before:content[''] peer relative h-4 w-4 cursor-pointer appearance-none rounded-full border border-gray-900/20 bg-white transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:scale-105 hover:before:opacity-0"
+                                                    id="customStyle" />
+                                                <span
+                                                    class="absolute  text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        class="h-3 w-3"
+                                                        viewBox="0 0 20 20"
+                                                        fill="currentColor"
+                                                        stroke="currentColor"
+                                                        stroke-width="1">
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <img [src]="data.logo"
+                                            alt="https://upload.wikimedia.org/wikipedia/en/thumb/8/86/Leksands_IF_logo.svg/1200px-Leksands_IF_logo.svg.png"
+                                            class="h-4 w-4 mt-0.5">
+                                        <a [routerLink]="['news', data.keyword]"
+                                            routerLinkActive="router-link-active"
+                                            class="text-[13px]"
+                                            (click)="getNews(data.keyword)">{{data.name}}</a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
-            </div>
-                </ng-container>
-
-
-
-            
-
-
+            </ng-container>
 
         </div>
-
-
     </ng-container>
     <div class="flex justify-between mt-32">
         <p>Color palette</p>
         <label class="relative inline-flex items-center me-5 cursor-pointer">
-            <input type="checkbox" value class="sr-only peer" (click)="toggleDarkMode()">
+            <input type="checkbox" value class="sr-only peer"
+                (click)="toggleDarkMode()">
             <div
                 class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600">
             </div>
@@ -124,9 +154,6 @@
     </div>
 
 </div>
-
-
-
 
 <!-- <div
         class="relative inline-block mt-3  pb-2 pt-2 ml-2 px-3 w-[280px] rounded-lg dark:bg-[#2D333C]">

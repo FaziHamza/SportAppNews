@@ -16,21 +16,23 @@
     </div>
 </div>
 
+
 <div class="block md:hidden">
     <div
         class="bg-[#c10206] dark:bg-[#2D333C] h-[80px] flex items-center justify-around">
+      
         <div>
-            <button class="text-white">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+            <button class="text-white"><i (click)="showSideBar()"
+                 class="fa-solid fa-bars"></i></button> 
+         </div>
         <div>
             <img class="h-12"
                 src="https://sportspotsverige.se/assets/sportblits_news_A4-f1a2085f.png">
         </div>
         <div>
-           <button class="text-white"><i (click)="showSideBar()"
-                class="fa-solid fa-bars"></i></button> 
+            <button class="text-white">
+                <i class="fa-solid fa-gear"></i>
+            </button>
         </div>
     </div>
 </div>
