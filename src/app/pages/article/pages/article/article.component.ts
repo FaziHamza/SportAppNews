@@ -44,7 +44,7 @@ export class ArticleComponent implements OnInit {
       this.firstRecord = this.newsData.splice(0, 1)[0];
       console.log(this.firstRecord);
 
-      this.nextThreeRecords = this.newsData.splice(0, 3);
+      this.nextThreeRecords = this.newsData.splice(0, 4);
       console.log(this.nextThreeRecords);
 
 
