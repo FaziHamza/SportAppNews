@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../theme-service.service';
 import { ApiService } from '../../../api.service';
 import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shared-sidebar',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule, FormsModule],
   templateUrl: './shared-sidebar.component.html',
   styleUrl: './shared-sidebar.component.scss'
 })
@@ -16,6 +17,8 @@ export class SharedSidebarComponent implements OnInit {
   menuItems: any[] = [];
   footballMenu: any;
   @Input() open?: boolean;
+  favouriteNews: any[] = [];
+  isChecked : boolean = false;
   constructor(public themeService: ThemeService, private api: ApiService,private router: Router) {
   }
 
@@ -85,6 +88,29 @@ export class SharedSidebarComponent implements OnInit {
     this.api.getNews(keyword);
   }
 
+  subTopicId(id:any){
+    debugger
+    console.log("sub topic id: " + id);
+    localStorage.setItem('subTopicId','');
+    localStorage.setItem('subtiopicId',id);
+  }
 
+
+  pass(data: any, isChecked: boolean): void {
+    let favouriteNews: any = localStorage.getItem('favMenu');
+    this.favouriteNews = favouriteNews ? JSON.parse(favouriteNews) : [];
+    if (isChecked) {
+      this.favouriteNews.push(data);
+      const index = this.favouriteNews.findIndex((item:any) => item.id === data.id);
+    } else {
+      const index = this.favouriteNews.findIndex((item:any) => item.id === data.id);
+      if (index !== -1) {
+        this.favouriteNews.splice(index, 1);
+      }
+    }
+    this.themeService.favouriteNews11 = this.favouriteNews;
+    localStorage.setItem('favMenu', JSON.stringify(this.favouriteNews));
+    console.log("favouriteNews", this.favouriteNews, "favouriteNews");
+  }
   
 }

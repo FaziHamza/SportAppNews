@@ -1,13 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../../../shared/modules/shared.module';
+import { ApiService } from '../../../../api.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: 'app-video-highlights',
   standalone: true,
   imports: [SharedModule],
   templateUrl: './video-highlights.component.html',
-  styleUrl: './video-highlights.component.scss'
+  styleUrl: './video-highlights.component.scss',
 })
-export class VideoHighlightsComponent {
+export class VideoHighlightsComponent implements OnInit  {
+  videoHilight:any
+  MainHighLight: any;
+  mainEmdcodeSanitize: SafeHtml | undefined;
+  VideoEmdcodeSanitize: SafeHtml | undefined;
+  VideoStart: boolean=false
+  sanitizeVideos: any[]=[];
+  constructor(public api:ApiService ,private sanitizer: DomSanitizer){}
+  ngOnInit(): void {
+    
+    const subtopicId=localStorage.getItem('subtiopicId');
+  console.log('subtopicId:',subtopicId);
+  
+  
+    this.api.GetVideoHighLight(subtopicId).subscribe((data)=>{
+      debugger
+this.videoHilight = data
+this.videoHilight=this.videoHilight.data;
+this.MainHighLight = this.videoHilight.splice(0, 1)[0];
+this.mainEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(this.MainHighLight.embededCode);
+for (let index = 0; index < this.videoHilight.length; index++) {
+  const element = this.videoHilight[index];
+  this.VideoEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(element.embededCode);
+  this.sanitizeVideos.push(this.VideoEmdcodeSanitize)
+  console.log("elementembededCode",this.sanitizeVideos);
+  
+}
+// this.videoHilightSanitize=this.sanitizer.bypassSecurityTrustHtml(this.videoHilight
+console.log('emdCodeSanitize',this.mainEmdcodeSanitize);
 
+console.log('mainHighlight', this.MainHighLight);
+
+      console.log('videoHilight',this.videoHilight);
+      
+    });
+  }
+  playVideo(){
+    this.VideoStart=!this.VideoStart;
+  }
+ 
 }

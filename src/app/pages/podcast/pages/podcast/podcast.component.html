@@ -1,4 +1,13 @@
 <div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
+    <div class="fixed inset-0 bg-[#00000087] z-50" *ngIf="PodcastStart">
+      
+        <div class="absolute h-[70vh] flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div class="  rounded p-3 flex gap-2 ">
+            <div class=" relative" [innerHTML]=""></div>
+            <i class="fa fa-times absolute right-5 text-white mt-2 cursor-pointer" aria-hidden="true" (click)="playPodcast()"></i>
+          </div>
+        </div>
+      </div>
     <!-- desktop body  -->
     <div class="px-4 py-10 max-w-[1180px] mx-auto">
         <div class="flex flex-wrap w-full">
@@ -16,9 +25,8 @@
                             </div>
                         </div>
                         
-                        <div class="w-full ">
-                            <img src="https://sportifiedspot.com/Resources/Images/3e8e679a-b1b8-4a98-8230-dd3ec7fef467.png"
-                                alt="" class="max-h-52 w-full object-cover">
+                        <div  (click)="playPodcast()" class="w-full h-[320px] " style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}})">
+                            
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-4xl bg-black rounded-full w-16 h-16 flex items-center justify-center"
@@ -28,16 +36,20 @@
                         <!-- text area -->
                         <div class="w-full text-center">
                             <strong>
-                                <h5 class="mt-2 text-lg">Dinja Van Liere vinner på hemmaplan, Amsterdam 2023</h5>
+                                <h5 class="mt-2 text-lg">{{MainHighLight.text}}
+
+                                </h5>
                             </strong>
-                            <P class="mt-1 text-sm">1/25/2024, 11:28:28 AM</P>
+                            <P class="mt-1 text-sm">{{ MainHighLight.datetime}}</P>
                         </div>
                     </div>
+                    <ng-container *ngFor="let item of PodcastHilight" >
+
+                   
                     <!-- card area start -->
                     <div class="bg-white dark:bg-[#171a1e] p-4 rounded-md w-full mt-2 flex">
-                        <div class="w-3/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/628e1e41-cff0-4f15-ba29-e342e32fefe8.png"
-                                alt="" class="h-28 rounded-lg">
+                        <div class="w-3/12 relative h-[130px]"  (click)="playPodcast()"style="background-image: url(https://sportifiedspot.com/{{item.thumbnail}})">
+                          
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-xl bg-black rounded-full w-10 h-10 flex items-center justify-center"
@@ -47,16 +59,16 @@
                         <div class="w-9/12 flex flex-col justify-center items-center">
 
                             <strong>
-                                <h5 class="text-base">FEI Dressage World Cup Grand Prix London 2023</h5>
+                                <h5 class="text-base">  {{item.text}} </h5>
                             </strong>
                             <small>
-                                <p class="text-xs">12/13/2023, 5:34:07 PM</p>
+                                <p class="text-xs"> {{item.datetime}} </p>
                             </small>
                         </div>
 
                     </div>
                    
-                    
+                </ng-container>
                 </main>
 
 
@@ -85,9 +97,8 @@
                             </div>
                         </div>
                         
-                        <div class="w-full ">
-                            <img src="https://sportifiedspot.com/Resources/Images/3e8e679a-b1b8-4a98-8230-dd3ec7fef467.png"
-                                alt="" class="max-h-52 w-full object-cover">
+                        <div class="w-full" (click)="playPodcast()" style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}})">
+                           
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-4xl bg-black rounded-full w-16 h-16 flex items-center justify-center"
@@ -97,16 +108,18 @@
                         <!-- text area -->
                         <div class="w-full text-center">
                             <strong>
-                                <h5 class="mt-2 text-base font-extrabold">Dinja Van</h5>
+                                <h5 class="mt-2 text-base font-extrabold">{{MainHighLight.text}} </h5>
                             </strong>
-                            <P class="mt-1 text-xs">1/25/2024, 11:28:28 AM</P>
+                            <P class="mt-1 text-xs">{{MainHighLight.datetime}} </P>
                         </div>
                     </div>
+                    <ng-container *ngFor="let item of PodcastHilight" >
+
+                   
                     <!-- card area start -->
                     <div class="bg-white dark:bg-[#171a1e] p-2 rounded-md w-full mt-2 flex">
-                        <div class="w-4/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/628e1e41-cff0-4f15-ba29-e342e32fefe8.png"
-                                alt="" class="rounded-lg h-20 w-full">
+                        <div class="w-4/12 relative"  (click)="playPodcast()" style="background-image: url(https://sportifiedspot.com/{{item.thumbnail}})">
+                            
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-sm bg-black rounded-full w-6 h-6 flex items-center justify-center"
@@ -116,16 +129,16 @@
                         <div class="w-8/12 p-2">
 
                             <strong>
-                                <h5 class="text-xs font-extrabold">FEI Dressage World Cup Grand </h5>
+                                <h5 class="text-xs font-extrabold"> {{item.text}}  </h5>
 
                             </strong>
                             <small>
-                                <p class="text-xs text-center mt-2">12/13/2023, 5:34:07 PM</p>
+                                <p class="text-xs text-center mt-2">{{item.datetime}} </p>
                             </small>
                         </div>
 
                     </div>
-                    
+                </ng-container>
 
                 </main>
 

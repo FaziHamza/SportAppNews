@@ -24,7 +24,7 @@ export class ArticleDetailComponent implements OnInit {
     public api: ApiService,
     private sanitizer: DomSanitizer
   ) {}
-
+    
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
       this.keyword = params['keyword'] || 'Dressyr';

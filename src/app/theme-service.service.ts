@@ -6,7 +6,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ThemeService {
-
+  favouriteNews11: any[] = [];
+  
   private modeSubject = new BehaviorSubject<boolean>(true);
   darkMode$ = this.modeSubject.asObservable();
 
@@ -15,9 +16,9 @@ export class ThemeService {
     this.modeSubject.next(newDarkModeValue);
     // window.localStorage.setItem('darkMode', JSON.stringify(newDarkModeValue));
   }
-  toggleSideBar:boolean=false;  
-    toggleSideBarFun(){
-    this.toggleSideBar=!this.toggleSideBar
-      }
-  
+  toggleSideBar: boolean = false;
+  toggleSideBarFun() {
+    this.toggleSideBar = !this.toggleSideBar
+  }
+
 }

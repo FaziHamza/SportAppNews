@@ -1,36 +1,61 @@
-<div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
+
+
+<div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block relative  z-10">
+    <div class="fixed inset-0 bg-[#00000087] z-50" *ngIf="VideoStart">
+      
+        <div class="absolute h-[70vh] flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div class="  rounded p-3 flex gap-2 ">
+            <div class=" relative" [innerHTML]="mainEmdcodeSanitize"></div>
+            <i class="fa fa-times absolute right-5 text-white mt-2 cursor-pointer" aria-hidden="true" (click)="playVideo()"></i>
+          </div>
+        </div>
+      </div>
+      
     <!-- desktop body  -->
+   
     <div class="px-4 py-10 max-w-[1180px] mx-auto">
         <div class="flex flex-wrap w-full">
             <div class="w-2/3 px-2">
+              
                 <main class="pt-0 px-3 py-4 rounded-md lg:mb-4 bg-[#eeeeee] dark:bg-[#2d333c] font-source-sans-3">
                     <div class="bg-white pt-10 dark:bg-[#171a1e] px-4  rounded-md  relative">
                         <!-- video logo div -->
                         <div class=" absolute top-6 left-2 z-10 bg-[#fde42f] rounded-md w-16 text-md text-center p-0.5">
                             <p>videos</p>
                         </div>
-                        <div class="w-full ">
-                            <img src="https://sportifiedspot.com/Resources/Images/76b8192f-fee0-4b57-8f66-b059074193c7.png"
-                                alt="" class="max-h-52 w-full object-cover">
-                            <!-- Play icon -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-4xl bg-black rounded-full w-16 h-16 flex items-center justify-center"
+
+                        <div (click)="playVideo()" class="w-full h-[320px] "class="w-full h-[320px] " style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}});" >
+  
+                          
+                      <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa-solid fa-play text-white text-xl bg-black rounded-full w-10 h-10 flex items-center justify-center"
                                     style="padding: 0.5rem;"></i>
                             </div>
                         </div>
                         <!-- text area -->
                         <div class="w-full text-center">
                             <strong>
-                                <h5 class="mt-2 text-lg">Dinja Van Liere vinner på hemmaplan, Amsterdam 2023</h5>
+                                <h5 class="mt-2 text-lg">{{MainHighLight.text}}</h5>
                             </strong>
-                            <P class="mt-1 text-sm">1/25/2024, 11:28:28 AM</P>
+                            <P class="mt-1 text-sm">{{MainHighLight.datetime}}</P>
                         </div>
                     </div>
                     <!-- card area start -->
-                    <div class="bg-white dark:bg-[#171a1e] p-4 rounded-md w-full mt-2 flex">
-                        <div class="w-3/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/25b37f58-0f5f-484d-b9c8-d9f870df617f.png"
-                                alt="" class="h-28 rounded-lg">
+                    <ng-container  *ngFor="let item of videoHilight">
+                        
+                    <div class="bg-white h-28 dark:bg-[#171a1e] p-4 rounded-md w-full mt-2 flex">
+                        <div class="fixed inset-0 bg-[#00000087] z-50" *ngIf="VideoStart">
+      
+                            <div class="absolute h-[70vh] flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                              <div class="  rounded p-3 flex gap-2 ">
+                                <div class=" relative" [innerHTML]="mainEmdcodeSanitize"></div>
+                                <i class="fa fa-times absolute right-5 text-white mt-2 cursor-pointer" aria-hidden="true" (click)="playVideo()"></i>
+                              </div>
+                            </div>
+                          </div>
+                        <div (click)="playVideo()" class="w-3/12 relative" style="background-image: url(https://sportifiedspot.com/{{item.thumbnail}});">
+                            
+                            
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-xl bg-black rounded-full w-10 h-10 flex items-center justify-center"
@@ -40,54 +65,17 @@
                         <div class="w-9/12 flex flex-col justify-center items-center">
 
                             <strong>
-                                <h5 class="text-base">FEI Dressage World Cup Grand Prix London 2023</h5>
+                                <h5 class="text-base">{{item.text}}</h5>
                             </strong>
                             <small>
-                                <p class="text-xs">12/13/2023, 5:34:07 PM</p>
+                                <p class="text-xs">{{item.datetime}}</p>
                             </small>
                         </div>
 
                     </div>
-                    <div class="bg-white dark:bg-[#171a1e] p-4 rounded-md w-full mt-2 flex">
-                        <div class="w-3/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/e7f222b8-c752-4ac0-9e5d-fc20a93f73d8.png"
-                                alt="" class="h-28 rounded-lg">
-                            <!-- Play icon -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-xl bg-black rounded-full w-10 h-10 flex items-center justify-center"
-                                    style="padding: 0.5rem;"></i>
-                            </div>
-                        </div>
-                        <div class="w-9/12 flex flex-col justify-center items-center">
-                            <strong>
-                                <h5 class="text-base">Congragulate Adnan Won the World Cup Grand Prix London 2024</h5>
-                            </strong>
-                            <small>
-                                <p class="text-xs">12/13/2023, 5:34:07 PM</p>
-                            </small>
-                        </div>
-
-                    </div>
-                    <div class="bg-white dark:bg-[#171a1e] p-4 rounded-md w-full mt-2 flex">
-                        <div class="w-3/12 relative">
-                            <img src="https://www.sportspotsverige.se/V4/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5"
-                                alt="" class="h-28 rounded-lg">
-                            <!-- Play icon -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-xl bg-black rounded-full w-10 h-10 flex items-center justify-center"
-                                    style="padding: 0.5rem;"></i>
-                            </div>
-                        </div>
-                        <div class="w-9/12 flex flex-col justify-center items-center">
-                            <strong>
-                                <h5 class="text-base">Congragulate Adnan Won the World Cup Grand Prix London 2024</h5>
-                            </strong>
-                            <small>
-                                <p class="text-xs">12/13/2023, 5:34:07 PM</p>
-                            </small>
-                        </div>
-
-                    </div>
+                </ng-container>
+                  
+                      
 
                 </main>
 
@@ -100,7 +88,15 @@
 
 <!-- Mobile view -->
 <div class="bg-[#cccccc] dark:bg-[#010a0f] block md:hidden">
-
+    <div class="fixed inset-0 bg-[#00000087] z-50" *ngIf="VideoStart">
+      
+        <div class="absolute h-[70vh] flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div class="  rounded p-3 flex gap-2 ">
+            <div class=" relative" [innerHTML]="mainEmdcodeSanitize"></div>
+            <i class="fa fa-times absolute right-5 text-white mt-2 cursor-pointer" aria-hidden="true" (click)="playVideo()"></i>
+          </div>
+        </div>
+      </div>
     <div class="px-4 py-10 max-w-[1180px] mx-auto">
         <div class="flex flex-wrap w-full">
             <div class="w-2/3 px-2">
@@ -110,9 +106,8 @@
                         <div class=" absolute top-6 left-2 z-10 bg-[#fde42f] rounded-md w-16 text-sm text-center p-0.5">
                             <p>videos</p>
                         </div>
-                        <div class="w-full relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/76b8192f-fee0-4b57-8f66-b059074193c7.png"
-                                alt="" class="max-h-24 w-full object-cover">
+                        <div class="w-full relative" style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}});">
+                           
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-lg bg-black rounded-full w-8 h-8 flex items-center justify-center"
@@ -123,16 +118,17 @@
                         <!-- text area -->
                         <div class="w-auto p-2">
                             <strong>
-                                <h5 class="mt-2 text-base">Dinja Van Liere vinner på hemmaplan, Amsterdam 2023</h5>
+                                <h5 class="mt-2 text-base">{{MainHighLight.text}}</h5>
                             </strong>
-                            <P class="text-center text-xs">1/25/2024, 11:28:28 AM</P>
+                            <P class="text-center text-xs">{{MainHighLight.datetime}}</P>
                         </div>
                     </div>
+                    <ng-container  *ngFor="let item of videoHilight">
+                        
                     <!-- card area start -->
                     <div class="bg-white dark:bg-[#171a1e] p-2 rounded-md w-full mt-2 flex">
-                        <div class="w-4/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/25b37f58-0f5f-484d-b9c8-d9f870df617f.png"
-                                alt="" class="rounded-lg h-20 w-full">
+                        <div class="w-4/12 relative" style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}})">
+                            
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <i class="fa-solid fa-play text-white text-sm bg-black rounded-full w-6 h-6 flex items-center justify-center"
@@ -142,62 +138,19 @@
                         <div class="w-8/12 p-2">
 
                             <strong>
-                                <h5 class="text-xs font-extrabold">FEI Dressage World Cup Grand </h5>
+                                <h5 class="text-xs font-extrabold">{{item.text}} </h5>
                                 
                             </strong>
                             <small>
-                                <p class="text-xs text-center mt-2">12/13/2023, 5:34:07 PM</p>
+                                <p class="text-xs text-center mt-2">{{item.datetime}}</p>
                             </small>
                         </div>
 
                     </div>
-                    <div class="bg-white dark:bg-[#171a1e] p-2 rounded-md w-full mt-2 flex">
-                        <div class="w-4/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/e7f222b8-c752-4ac0-9e5d-fc20a93f73d8.png"
-                                alt="" class="rounded-lg h-20 w-full">
-                            <!-- Play icon -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-sm bg-black rounded-full w-6 h-6 flex items-center justify-center"
-                                    style="padding: 0.5rem;"></i>
-                            </div>
-                        </div>
-                        <div class="w-8/12 p-2">
-
-                            <strong>
-                                <h5 class="text-xs font-extrabold">FEI Dressage World Cup Grand </h5>
-                                
-                            </strong>
-                            <small>
-                                <p class="text-xs text-center mt-2">12/13/2023, 5:34:07 PM</p>
-                            </small>
-                        </div>
-
-                    </div>
-                    <div class="bg-white dark:bg-[#171a1e] p-2 rounded-md w-full mt-2 flex">
-                        <div class="w-4/12 relative">
-                            <img src="https://sportifiedspot.com/Resources/Images/76b8192f-fee0-4b57-8f66-b059074193c7.png"
-                                alt="" class="rounded-lg h-20 w-full">
-                            <!-- Play icon -->
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fa-solid fa-play text-white text-sm bg-black rounded-full w-6 h-6 flex items-center justify-center"
-                                    style="padding: 0.5rem;"></i>
-                            </div>
-                        </div>
-                        <div class="w-8/12 p-2">
-
-                            <strong>
-                                <h5 class="text-xs font-extrabold">FEI Dressage World Cup Grand </h5>
-                                
-                            </strong>
-                            <small>
-                                <p class="text-xs text-center mt-2">12/13/2023, 5:34:07 PM</p>
-                            </small>
-                        </div>
-
-                    </div>
+                 
                 
+                </ng-container>
                 </main>
-
 
             </div>
 

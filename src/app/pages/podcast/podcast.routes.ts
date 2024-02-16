@@ -7,7 +7,7 @@ export const podcastRoutes: Routes = [
         path: '', component: SharedLayoutComponent, title: "Podcast",
         children: [
             {
-                path: 'podcast',  // child route path
+                path: '',  // child route path
                 title: "Podcast",
                 component: PodcastComponent,  // child route component that the router renders
             },
