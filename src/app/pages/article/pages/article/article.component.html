@@ -15,7 +15,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" " (click)="PordCastHighlight()" *ngIf="pordCastStatus">
+                        <div class=" " (click)="PodCastHighlight()" *ngIf="pordCastStatus">
                             <div class="w-full bg-black p-1 px-2 rounded-lg">
                                 <span class="text-white dark:text-white"><i class="fa fa-microphone mr-2"
                                         aria-hidden="true "></i><span class="text-base ">Podcasts</span>
@@ -26,17 +26,17 @@
 
                     <div class="dark:text-white decoration-none text-black "
                         href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
-                        <div [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active"
+                        <div [routerLink]="['/news',api.keyword,firstRecord?._id]" routerLinkActive="router-link-active"
                             class="w-full p-2.5 shadow-md rounded-lg bg-white dark:bg-[#171a1e] dark:text-white text-black flex justify-evenly mt-2.5 mb-2.5">
                             <div class="w-full h-[230px]">
                                 <img class="w-full object-cover h-[230px] rounded-md align-middle"
-                                    [src]="firstRecord._medias[1].href"
+                                    [src]="firstRecord?._medias[1].href"
                                     >
                             </div>
                             <div class="w-full px-4 flex flex-col justify-between">
                                 <p
                                     class="mt-2 overflow-hidden font-source-sans-3 font-semibold leading-7 line-clamp-6 text-xl">
-                                    {{firstRecord._abstract}}</p>
+                                    {{firstRecord?._abstract}}</p>
                                 <h5 class="text-[11px] font-medium inline-flex">
                                     <img class="h-[15px] mt-1"
                                         src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg" alt>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" " (click)="PordCastHighlight()" *ngIf="pordCastStatus">
+                        <div class=" " (click)="PodCastHighlight()" *ngIf="pordCastStatus">
                             <div class="w-full bg-black p-1 px-2 rounded-lg">
                                 <span class="text-white dark:text-white"><i class="fa fa-microphone mr-2"
                                         aria-hidden="true "></i><span class="text-base ">Podcasts</span>
@@ -138,16 +138,16 @@
 
 
                         <div class="w-full p-2.5  bg-white dark:bg-[#010a0f] dark:text-white text-black"
-                            [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active">
+                            [routerLink]="['/news',api.keyword,firstRecord?._id]" routerLinkActive="router-link-active">
                             <div class="w-full h-[260px]">
                                 <img class="w-full object-cover rounded-lg shadow-md h-[260px] align-middle"
-                                    [src]="firstRecord._medias[1].href">
+                                    [src]="firstRecord?._medias[1].href">
                             </div>
                             <div class="w-full  flex flex-col justify-between">
-                                <h1 class="text-xl mt-2 font-bold">{{firstRecord._title}}</h1>
+                                <h1 class="text-xl mt-2 font-bold">{{firstRecord?._title}}</h1>
                                 <p
                                     class="overflow-hidden font-source-sans-3 mt-2 leading-4 line-clamp-3 text-sm text-gray-600 dark:text-white">
-                                    {{firstRecord._abstract}}
+                                    {{firstRecord?._abstract}}
                                 </p>
                                 <div class="mt-2">
                                     <h6 class="text-sm font-medium flex justify-between text-gray-600 dark:text-white">1
@@ -163,7 +163,7 @@
                 <div class="w-full grid grid-cols-2 gap-2 mt-2">
                     <ng-container *ngFor="let item of nextThreeRecords">
                         <div class="rounded-lg bg-[#f5f5f5] dark:bg-[#2d333c]"
-                            [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active">
+                            [routerLink]="['/news',api.keyword,firstRecord?._id]" routerLinkActive="router-link-active">
                             <div class=" text-white decoration-none h-56"
                                 href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
 
@@ -199,7 +199,7 @@
                 <ng-container *ngFor="let item of newsData">
                     <div class="block w-full">
 
-                        <div [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active"
+                        <div [routerLink]="['/news',api.keyword,firstRecord?._id]" routerLinkActive="router-link-active"
                             class="w-full p-2.5 rounded-lg shadow-lg flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
                             <div class="w-3/4 ">
                                 <img class="w-full h-full object-cover rounded-lg" [src]="item._medias[1].href" alt>

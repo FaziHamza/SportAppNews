@@ -28,8 +28,12 @@ export class ArticleComponent implements OnInit {
   pordCastStatus: boolean = false;
   menuItems: any = [];
 
-  constructor(public route: ActivatedRoute, public api: ApiService, private router: Router,
-    public themeService: ThemeService) { }
+  constructor(
+    public route: ActivatedRoute,
+    public api: ApiService,
+    private router: Router,
+    public themeService: ThemeService
+    ) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -55,16 +59,16 @@ export class ArticleComponent implements OnInit {
     this.api.GetTopicWithSubTopic().subscribe(res => {
       this.menuItems = res.menuItems;
     });
-
   }
-  videoHighlight() {
 
+  videoHighlight() {
     this.router.navigate(['video']);
   }
-  PordCastHighlight() {
 
+  PodCastHighlight() {
     this.router.navigate(['podcast']);
   }
+
   handleFetchNewsData(keyword: string): void {
     this.api.getNews(keyword).subscribe((data: any) => {
       this.fullData = data;
@@ -75,9 +79,11 @@ export class ArticleComponent implements OnInit {
       }
     });
   }
+
   MoveToNews(keyword: any) {
     this.router.navigate(['news', keyword])
   }
+  
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
   }
