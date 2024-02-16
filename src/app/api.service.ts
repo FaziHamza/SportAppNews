@@ -21,6 +21,11 @@ export class ApiService {
     this.keyword = keyword;
     return this.http.get(url);
   }
+  getNewsbyTeam(keyword: string): Observable<any> {
+    const url = `${this.newsBaseUrl}V4//api/news/getNewsByTeamById?newsId=${keyword}&lang=sv`;
+    this.keyword = keyword;
+    return this.http.get(url);
+  }
 
   GetTopicWithSubTopic(): Observable<any> {
 

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterModule, Event as NavigationEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../../../../api.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { MetaTagService } from '../../../../meta-tag.service';
 
 @Component({
   selector: 'app-article-detail',
-  standalone:true,
+  standalone: true,
   imports: [RouterModule],
   templateUrl: './article-detail.component.html',
   styleUrl: './article-detail.component.scss',
@@ -18,38 +19,55 @@ export class ArticleDetailComponent implements OnInit {
   keyword!: string;
   articleDetails: any;
   sanitizedContent: SafeHtml | undefined;
-
+  currentRoute: any;
+  event$: any;
   constructor(
     private route: ActivatedRoute,
     public api: ApiService,
-    private sanitizer: DomSanitizer
-  ) {}
-    
+    private sanitizer: DomSanitizer,
+    private metaTagService: MetaTagService,
+    private router: Router
+  ) {
+    console.log('router',router.url);
+    this.event$
+    =this.router.events
+        .subscribe(
+          (event: NavigationEvent) => {
+            if(event instanceof NavigationStart) {
+              console.log('router',event.url);
+            }
+          });
+  }
+
+
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
       this.keyword = params['keyword'] || 'Dressyr';
       this.articleId = params['id'];
       this.handleFetchArticleData(this.keyword, this.articleId);
     });
+    
+    console.log(this.router.url);
+   
   }
 
   handleFetchArticleData(keyword: string, id: string): void {
-    // Make API call to fetch news data based on keyword
-    this.api.getNews(keyword).subscribe((data: any) => {
-      // Assign the fetched news data
+    this.api.getNewsbyTeam(id).subscribe((data: any) => {
       this.newsData = data;
-      console.log('Articles details:', this.newsData);
+      console.log(this.newsData)
+      const ogImageUrl = data[0]._medias[1].href;
+      this.metaTagService.updateOGImageTag(ogImageUrl);
+      this.metaTagService.updateOGTitleTag(data[0]._title);
+      this.metaTagService.updateOGUrlTag(this.event$);
 
-      // Find the article with the matching ID
+
       const article = this.newsData.find((article: any) => article._id === id);
       this.articleDetails = article;
 
       if (article) {
-        // If the article is found, sanitize the content
         this.sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(article._content);
         console.log('Sanitized:', this.sanitizedContent);
       } else {
-        // Handle case where the article is not found
         console.log('Article not found.');
       }
     });

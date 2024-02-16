@@ -19,6 +19,8 @@ export class VideoHighlightsComponent implements OnInit  {
   VideoEmdcodeSanitize: SafeHtml | undefined;
   VideoStart: boolean=false
   sanitizeVideos: any[]=[];
+  videoSanitized: any;
+  VideoStarts: boolean=false;
   constructor(public api:ApiService ,private sanitizer: DomSanitizer){}
   ngOnInit(): void {
     
@@ -50,6 +52,24 @@ console.log('mainHighlight', this.MainHighLight);
   }
   playVideo(){
     this.VideoStart=!this.VideoStart;
+  }
+  playVideos(index: number) {
+    console.log(index);
+    
+    debugger
+    
+    // Set the embed code corresponding to the clicked thumbnail
+    this.videoSanitized = this.sanitizeVideos[index];
+    console.log(typeof this.videoSanitized);
+    console.log( this.videoSanitized);
+    this.VideoStarts=!this.VideoStarts;
+  }
+
+  closeVideo() {
+    this.VideoStart = false;
+  }
+  closeVideos() {
+    this.VideoStarts=!this.VideoStarts;
   }
  
 }

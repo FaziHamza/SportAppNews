@@ -24,33 +24,34 @@ export class AppComponent {
     private metaTagService: MetaTagService,
     private themeService: ThemeService
   ) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      // debugger
-      // Determine the OG image based on the event.url
-      // Example: 
-      let ogImageUrl = '';
-      if (event.url == '/sub') {
-        this.metaTagService.getData('https://www.sportspotsverige.se/V4//api/news/getNewsByTeamById?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb&lang=sv').subscribe((res => {
-          ogImageUrl = res[0]._medias[1].href;
-          this.metaTagService.updateOGImageTag(ogImageUrl);
-          this.metaTagService.updateOGUrlTag(ogImageUrl);
-          this.metaTagService.updateOGTitleTag("ABC");
-        }))
-      }
-      else if (event.url == '/home') {
-        this.metaTagService.getData('https://www.sportspotsverige.se/V4//api/news/getNewsByTeamById?newsId=4405007b-c3e6-4f36-a268-08dc179c3a39&lang=sv').subscribe((res => {
-          ogImageUrl = res[0]._medias[1].href;
-          this.metaTagService.updateOGImageTag(ogImageUrl);
-          this.metaTagService.updateOGUrlTag(ogImageUrl);
-          this.metaTagService.updateOGTitleTag("ABC");
-        }))
-      }
+  //   this.router.events.pipe(
+  //     filter(event => event instanceof NavigationEnd)
+  //   ).subscribe((event: any) => {
+  //     // debugger
+  //     // Determine the OG image based on the event.url
+  //     // Example: 
+  //     let ogImageUrl = '';
+  //     if (event.url) {
+  //       this.metaTagService.getData('https://www.sportspotsverige.se/V4//api/news/getNewsByTeamById?newsId=810c383c-8779-432b-e8d3-08dc1c4631fb&lang=sv').subscribe((res => {
+  //         ogImageUrl = res[0]._medias[1].href;
+  //         this.metaTagService.updateOGImageTag(ogImageUrl);
+  //         this.metaTagService.updateOGUrlTag(ogImageUrl);
+  //         this.metaTagService.updateOGTitleTag("ABC");
+  //       }))
+  //     }
+  //     else if (event.url == '/home') {
+  //       this.metaTagService.getData('https://www.sportspotsverige.se/V4//api/news/getNewsByTeamById?newsId=4405007b-c3e6-4f36-a268-08dc179c3a39&lang=sv').subscribe((res => {
+  //         ogImageUrl = res[0]._medias[1].href;
+  //         this.metaTagService.updateOGImageTag(ogImageUrl);
+  //         this.metaTagService.updateOGUrlTag(ogImageUrl);
+  //         this.metaTagService.updateOGTitleTag("ABC");
+  //       }))
+  //     }
 
-    });
-  }
+  //   });
+  // }
  
+}
 }
 
 

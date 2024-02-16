@@ -1,103 +1,93 @@
 <div class="bg-[#cccccc] dark:bg-[#010a0f] hidden md:block">
     <!-- desktop body  -->
-    <div class="px-4 py-10 max-w-[1180px] mx-auto cursor-pointer">
-        <div class="flex flex-wrap w-full relative">
+    <div class="px-4 py-10 max-w-[1180px] mx-auto  cursor-pointer">
+        <div class="flex flex-wrap w-full">
             <div class="w-2/3 px-2 ">
-                <main
-                    class="px-5 pb-5 pt-2 rounded-lg lg:mb-4 relative  bg-[#f5f5f5] dark:bg-[#2d333c]">
-                    <div class="w-ful flex justify-end gap-4">
-                        <div class (click)="videoHighlight()"
-                            *ngIf="videoStatus">
-                            <!-- <div
-                                class="w-full bg-black p-1 px-2 mb-1 rounded-lg">
-                                <span class="text-white dark:text-white"><i
-                                        class="fa-solid fa-play mr-2"></i><span
-                                        class="text-base ">videos</span> </span>
-                            </div> -->
-                            <div class="absolute top-2 right-5">
-                                <div
-                                    class="w-full bg-black p-1 px-2 rounded-lg">
-                                    <span class="text-white dark:text-white"><i
-                                            class="fa-solid fa-play mr-2"></i><span
-                                            class="text-base ">videos</span>
-                                    </span>
+                <!-- video icon -->
+
+                <main class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] dark:bg-[#2d333c] relative">
+                    <div class="absolute right-4 top-2 flex justify-end gap-2">
+                        <div class=" " (click)="videoHighlight()" *ngIf="videoStatus">
+                            <div class="  ">
+                                <div class="w-full bg-black p-1 px-2 rounded-lg">
+                                    <span class="text-white dark:text-white"><i class="fa-solid fa-play mr-2"></i><span
+                                            class="text-base ">videos</span> </span>
                                 </div>
                             </div>
                         </div>
-                        <div class=" " (click)="PordCastHighlight()"
-                            *ngIf="pordCastStatus">
-                            <div
-                                class="w-full bg-black p-1 px-2 mb-1 rounded-lg">
-                                <span class="text-white dark:text-white"><i
-                                        class="fa fa-microphone mr-2"
-                                        aria-hidden="true "></i><span
-                                        class="text-base ">Podcasts</span>
+                        <div class=" " (click)="PordCastHighlight()" *ngIf="pordCastStatus">
+                            <div class="w-full bg-black p-1 px-2 rounded-lg">
+                                <span class="text-white dark:text-white"><i class="fa fa-microphone mr-2"
+                                        aria-hidden="true "></i><span class="text-base ">Podcasts</span>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <div [routerLink]="['/news',api.keyword,firstRecord._id]"
-                        routerLinkActive="router-link-active"
-                        class="w-full p-2.5 rounded-md bg-white dark:bg-[#171a1e]   dark:text-white text-black flex justify-evenly mb-2.5">
-                        <div class="w-full h-[260px]">
-                            <img
-                                class="w-full object-cover h-[260px] rounded-md align-middle"
-                                [src]="firstRecord._medias[1].href"
-                                alt>
-                        </div>
-                        <div class="w-full px-4 flex flex-col justify-between">
-                            <p
-                                class="overflow-hidden cursor-pointer font-source-sans-3 font-semibold leading-6 line-clamp-3 text-2xl">{{firstRecord._abstract}}</p>
-                            <h6 class="text-[11px] font-medium inline-flex">1
-                                Dag <img class="h-[20px]"
-                                    src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                    alt></h6>
+
+                    <div class="dark:text-white decoration-none text-black "
+                        href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
+                        <div [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active"
+                            class="w-full p-2.5 shadow-md rounded-lg bg-white dark:bg-[#171a1e] dark:text-white text-black flex justify-evenly mt-2.5 mb-2.5">
+                            <div class="w-full h-[230px]">
+                                <img class="w-full object-cover h-[230px] rounded-md align-middle"
+                                    [src]="firstRecord._medias[1].href"
+                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
+                            </div>
+                            <div class="w-full px-4 flex flex-col justify-between">
+                                <p
+                                    class="mt-2 overflow-hidden font-source-sans-3 font-semibold leading-7 line-clamp-6 text-xl">
+                                    {{firstRecord._abstract}}</p>
+                                <h5 class="text-[11px] font-medium inline-flex">
+                                    <img class="h-[15px] mt-1"
+                                        src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg" alt>
+                                    <span class="ms-1 text-sm"> 1 Dag</span>
+
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </main>
-                <ng-container *ngFor="let item of nextThreeRecords">
-                    <div
-                        class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] dark:bg-[#2d333c]"
-                        [routerLink]="['/news',api.keyword,item._id]"
-                        routerLinkActive="router-link-active">
-                        <div
-                            class="w-full p-2.5 rounded-md bg-white dark:bg-[#171a1e] dark:text-white text-black flex justify-evenly mb-2.5">
-                            <div class="w-full">
-                                <img
-                                    class="w-3/4 object-cover rounded align-middle"
-                                    [src]="item._medias[1].href"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
-                            </div>
+                <div class="p-5 rounded-lg lg:mb-4 bg-[#f5f5f5] dark:bg-[#2d333c]">
+                    <ng-container *ngFor="let item of nextThreeRecords">
+                        <div class="text-white decoration-none " [routerLink]="['/news',api.keyword,item._id]"
+                            routerLinkActive="router-link-active"
+                            href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
                             <div
-                                class="w-full px-4 flex flex-col justify-between">
-                                <p
-                                    class="overflow-hidden font-source-sans-3 font-semibold leading-6 line-clamp-6 text-base cursor-pointer">{{item._abstract}}</p>
-                                <h6
-                                    class="text-[11px] font-medium inline-flex">1
-                                    Dag <img class="h-[20px]"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt></h6>
+                                class=" h-32 shadow-md p-2.5 rounded-md bg-white dark:bg-[#171a1e] dark:text-white text-black flex mb-2">
+                                <div class="w-8/12 ">
+                                    <img class="w-3/4 h-24 object-cover rounded align-middle"
+                                        [src]="item._medias[1].href" alt="">
+                                </div>
+                                <div class="w-full flex flex-col justify-between">
+                                    <p
+                                        class="overflow-hidden font-source-sans-3 font-semibold leading-6 line-clamp-3 text-base">
+                                        {{item._abstract}}
+                                    </p>
+                                    <h5 class="text-[11px] font-medium inline-flex">
+                                        <img class="h-[12px] mt-1"
+                                            src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
+                                            alt>
+                                        <span class="ms-1 text-xs"> 1 Dag</span>
+
+                                    </h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ng-container>
+
+                    </ng-container>
+                </div>
             </div>
             <div class="w-1/3 px-2">
                 <ng-container *ngFor="let item of newsData">
                     <div class="block w-full">
 
-                        <div [routerLink]="['/news',api.keyword,item._id]"
-                            routerLinkActive="router-link-active"
+                        <div [routerLink]="['/news',api.keyword,item._id]" routerLinkActive="router-link-active"
                             class="w-full p-2.5 rounded-lg flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
                             <div class="w-3/4 ">
-                                <img
-                                    class="w-full h-full object-cover rounded-lg"
-                                    [src]="item._medias[1].href" alt>
+                                <img class="w-full h-full object-cover rounded-lg" [src]="item._medias[1].href" alt="">
                             </div>
-                            <div
-                                class="w-full px-3 h-auto font-medium flex flex-col justify-between">
-                                <p
-                                    class="text-xs  leading-4 line-clamp-4  font-source-sans-3 overflow-ellipsis mb-1">
+                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
+                                <p class="text-xs  leading-4 line-clamp-4  font-source-sans-3 overflow-ellipsis mb-1">
                                     {{item._abstract}}
                                 </p>
                                 <h6 class="text-[11px] m-0 inline-flex">
@@ -109,107 +99,149 @@
                             </div>
                         </div>
 
+
                     </div>
                 </ng-container>
             </div>
         </div>
     </div>
+
 </div>
 
 <div class="bg-[#f5f5f5] dark:bg-[#2d333c] block md:hidden">
     <!-- Mobile body  -->
-    <div class="px-4 py-4 max-w-[1180px] mx-auto">
+    <div class="px-4 py-4  max-w-[1180px] mx-auto cursor-pointer">
         <div class="flex flex-wrap w-full">
             <div class="w-full px-2">
-                <main class="p-2 rounded-lg bg-white dark:bg-[#010a0f] relative">
-                    <div class="w-ful flex justify-end gap-4 ">
-                        <div class (click)="videoHighlight()"
-                            *ngIf="videoStatus">
-                            <div class="absolute top-2 right-5">
-                                <div
-                                    class="w-full bg-black p-1 px-2 rounded-lg">
-                                    <span class="text-white dark:text-white"><i
-                                            class="fa-solid fa-play mr-2"></i><span
-                                            class="text-base ">videos</span>
-                                    </span>
+                <main class="p-2  rounded-lg relative  bg-white dark:bg-[#010a0f]">
+                    <div class="absolute right-4 flex justify-end gap-2">
+                        <div class=" " (click)="videoHighlight()" *ngIf="videoStatus">
+                            <div class="  ">
+                                <div class="w-full bg-black p-1 px-2 rounded-lg">
+                                    <span class="text-white dark:text-white"><i class="fa-solid fa-play mr-2"></i><span
+                                            class="text-base ">videos</span> </span>
                                 </div>
                             </div>
                         </div>
-                        <div class=" " (click)="PordCastHighlight()"
-                            *ngIf="pordCastStatus">
-                            <div
-                                class="w-full bg-black p-1 px-2 mb-1 rounded-lg">
-                                <span class="text-white dark:text-white"><i
-                                        class="fa fa-microphone mr-2"
-                                        aria-hidden="true "></i><span
-                                        class="text-base ">Podcasts</span>
+                        <div class=" " (click)="PordCastHighlight()" *ngIf="pordCastStatus">
+                            <div class="w-full bg-black p-1 px-2 rounded-lg">
+                                <span class="text-white dark:text-white"><i class="fa fa-microphone mr-2"
+                                        aria-hidden="true "></i><span class="text-base ">Podcasts</span>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="w-full p-2.5 bg-white dark:bg-[#010a0f] dark:text-white text-black mb-2.5"
-                        [routerLink]="['/news',api.keyword,firstRecord._id]"
-                        routerLinkActive="router-link-active">
-                        <div class="w-full h-[260px]">
-                            <img
-                                class="w-full object-cover h-[260px] align-middle"
-                                [src]="firstRecord._medias[1].href">
-                        </div>
-                        <div class="w-full flex flex-col justify-between">
-                            <p
-                                class="overflow-hidden font-source-sans-3 mt-2 font-semibold leading-6 line-clamp-3 text-base">{{firstRecord._abstract}}</p>
-                            <h6 class="text-[11px] font-medium inline-flex">1
-                                Dag <img class="h-[20px]"
-                                    src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                    alt></h6>
+
+                    <div class="dark:text-white decoration-none text-black"
+                        href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
+
+
+
+                        <div class="w-full p-2.5  bg-white dark:bg-[#010a0f] dark:text-white text-black"
+                            [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active">
+                            <div class="w-full h-[260px]">
+                                <img class="w-full object-cover rounded-lg shadow-md h-[260px] align-middle"
+                                    [src]="firstRecord._medias[1].href">
+                            </div>
+                            <div class="w-full  flex flex-col justify-between">
+                                <h1 class="text-xl mt-2 font-bold">{{firstRecord._title}}</h1>
+                                <p
+                                    class="overflow-hidden font-source-sans-3 mt-2 leading-4 line-clamp-3 text-sm text-gray-600 dark:text-white">
+                                    {{firstRecord._abstract}}
+                                </p>
+                                <div class="mt-2">
+                                    <h6 class="text-sm font-medium flex justify-between text-gray-600 dark:text-white">1
+                                        Dag
+                                        <img class="h-[25px]" src="" alt>
+                                    </h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </main>
-                <ng-container *ngFor="let item of nextThreeRecords">
-                    <div
-                        class="py-2.5 rounded-lg bg-[#f5f5f5] dark:bg-[#2d333c]"
-                        [routerLink]="['/news',api.keyword,item._id]"
-                        routerLinkActive="router-link-active">
-                        <div
-                            class="w-full h-30 p-2.5 rounded-md bg-white dark:bg-[#010a0f] dark:text-white text-black flex justify-evenly mb-2.5">
-                            <div class="w-full">
-                                <img
-                                    class="w-3/4 object-cover rounded align-middle"
-                                    [src]="item._medias[1].href"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
-                            </div>
-                            <div
-                                class="w-full px-4 flex flex-col justify-between leading-6 line-clamp-3">
-                                <p>{{item._abstract}}</p>
-                                <h6
-                                    class="text-[11px] font-medium inline-flex">1
-                                    Dag <img class="h-[20px]"
-                                        src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
-                                        alt></h6>
+                <div class="w-full grid grid-cols-2 gap-2 mt-2">
+                    <ng-container *ngFor="let item of nextThreeRecords">
+                        <div class="rounded-lg bg-[#f5f5f5] dark:bg-[#2d333c]"
+                            [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active">
+                            <div class=" text-white decoration-none h-56"
+                                href="/news/undefined/d657588f-3b59-4046-d0db-08dc217eefb5">
+
+                                <div
+                                    class="w-full h-30 p-2.5 rounded-md bg-white dark:bg-[#010a0f] dark:text-white text-black mb-2.5">
+                                    <div class="w-full">
+                                        <img class="w-full h-24 object-cover rounded align-middle"
+                                            src="{{ item._medias[1].href }}"
+                                            alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
+                                    </div>
+
+                                    <div class="w-full flex flex-col justify-between  ">
+                                        <p class="text-xs mt-3 leading-5 line-clamp-3 text-gray-600 dark:text-white">
+                                            {{item._abstract}}</p>
+                                        <div class="w-full text-[11px] font-medium flex flex-row justify-center ">
+                                            <div
+                                                class="w-auto bg-slate-100 dark:bg-slate-800 rounded-full inline-flex p-[3px] mt-1">
+                                                <img class="h-[13px] mt-1 mr-1"
+                                                    src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg"
+                                                    alt>
+                                                <span class="text-black dark:text-white">1 Dag</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ng-container>
-            </div>
-        </div>
-        <!-- auto nav -->
-        <nav class="p-4 overflow-x-auto whitespace-nowrap mr-2"
-            style="overflow-x: auto;">
-            <div class="mx-auto flex justify-between items-center">
-                <!-- Navbar links -->
-                <div class="flex">
-                    <ng-container
-                        *ngFor="let data of themeService.favouriteNews11">
-                        <a (click)="MoveToNews(data.keyword)"
-                            class="ms-2 flex items-center rounded py-2 px-3 bg-gray-900 text-white   hover:bg-white hover:text-black transition duration-300 ease-in-out">
-                            <img [src]="data.logo" alt class="h-5 w-5">
-                            <p class="text-xs ms-2 font-semibold">{{ data.name
-                                }}</p>
-                        </a>
                     </ng-container>
                 </div>
             </div>
-        </nav>
+
+            <div class="w-full px-2">
+                <ng-container *ngFor="let item of newsData">
+                    <div class="block w-full">
+
+                        <div [routerLink]="['/news',api.keyword,firstRecord._id]" routerLinkActive="router-link-active"
+                            class="w-full p-2.5 rounded-lg shadow-lg flex justify-between mb-2.5 h-28 bg-white dark:bg-[#171a1e] dark:text-white text-black">
+                            <div class="w-3/4 ">
+                                <img class="w-full h-full object-cover rounded-lg" [src]="item._medias[1].href" alt>
+                            </div>
+                            <div class="w-full px-3 h-auto font-medium flex flex-col justify-between">
+                                <p
+                                    class="text-[10px]  leading-5 line-clamp-3 text-gray-600 dark:text-white font-source-sans-3 overflow-ellipsis mb-1">
+                                    {{item._abstract}}
+                                </p>
+                                <div class="text-[10px] m-0 inline-flex">
+
+                                    <img class="h-4"
+                                        src="https://sportspotsverige.se/assets/SPORTIFIEDSPOT.COM_A8-75819484.svg" alt>
+                                    <span class="text-gray-600 dark:text-white m-1">9 Dag</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </ng-container>
+            </div>
+            <!-- bottom navbar  -->
+
+
+            <nav class="p-4 overflow-x-auto whitespace-nowrap mr-2" style="overflow-x: auto;">
+                <div class="mx-auto flex justify-between items-center">
+                    <!-- Navbar links -->
+                    <div class="flex">
+                        <ng-container *ngFor="let data of themeService.favouriteNews11">
+                            <a (click)="MoveToNews(data.keyword)"
+                                class="ms-2 flex items-center rounded py-2 px-3 bg-gray-900 text-white   hover:bg-white hover:text-black transition duration-300 ease-in-out">
+                                <img [src]="data.logo" alt="" class="h-5 w-5">
+                                <p class="text-xs ms-2 font-semibold">{{ data.name }}</p>
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+            </nav>
+
+
+
+        </div>
     </div>
 </div>
