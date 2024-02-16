@@ -52,8 +52,7 @@ export class ArticleDetailComponent implements OnInit {
       this.newsData = res[0];
       const ogImageUrl = this.newsData._medias[1].href;
       const ogTitle = this.newsData._title;
-      const ogUrl = this.location.path();
-
+      const ogUrl = location.href;
       this.metaTagService.updateOGImageTag(ogImageUrl);
       this.metaTagService.updateOGTitleTag(ogTitle);
       this.metaTagService.updateOGUrlTag(ogUrl);
