@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../../theme-service.service';
 import { ApiService } from '../../../api.service';
 import { Router, RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-shared-sidebar',
   standalone: true,
-  imports: [CommonModule,RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './shared-sidebar.component.html',
   styleUrl: './shared-sidebar.component.scss'
 })
@@ -18,23 +18,27 @@ export class SharedSidebarComponent implements OnInit {
   footballMenu: any;
   @Input() open?: boolean;
   favouriteNews: any[] = [];
-  isChecked : boolean = false;
-  constructor(public themeService: ThemeService, private api: ApiService,private router: Router) {
+  isChecked: boolean = false;
+  constructor(
+    public themeService: ThemeService,
+    private api: ApiService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object) {
   }
 
   ngOnInit(): void {
     this.api.GetTopicWithSubTopic().subscribe(res => {
       this.data = res.menuItems;
-    
+
       this.data = this.mergeSubtopicsDynamic(this.data);
       this.menuItems = this.data;
-     
+
 
     });
   }
   mergeSubtopicsDynamic(menuItems: any[]): any[] {
     const topicsByMainHeading: { [key: string]: any } = {};
-   
+
     // Group topics and subtopics by main heading
     menuItems.forEach(item => {
       const mainHeading = item.topic.mainHeading.trim();
@@ -60,7 +64,7 @@ export class SharedSidebarComponent implements OnInit {
 
     return mergedTopics;
   }
-  getSubTopics(subTopic: any,item:any) {
+  getSubTopics(subTopic: any, item: any) {
     return subTopic.filter((a: any) => a.topicID == item.topicID);
   }
 
@@ -86,29 +90,34 @@ export class SharedSidebarComponent implements OnInit {
     this.api.getNews(keyword);
   }
 
-  subTopicId(id:any){
+  subTopicId(id: any) {
     debugger
-    localStorage.setItem('subTopicId','');
-    localStorage.setItem('subtiopicId',id);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('subTopicId', '');
+      localStorage.setItem('subtiopicId', id);
+    }
+
   }
 
 
   pass(data: any, isChecked: boolean): void {
-    let favouriteNews: any = localStorage.getItem('favMenu');
-    this.favouriteNews = favouriteNews ? JSON.parse(favouriteNews) : [];
-    if (isChecked) {
-      this.favouriteNews.push(data);
-      const index = this.favouriteNews.findIndex((item:any) => item.id === data.id);
-    } else {
-      const index = this.favouriteNews.findIndex((item:any) => item.id === data.id);
-      if (index !== -1) {
-        this.favouriteNews.splice(index, 1);
+    if (isPlatformBrowser(this.platformId)) {
+      let favouriteNews: any = localStorage.getItem('favMenu');
+      this.favouriteNews = favouriteNews ? JSON.parse(favouriteNews) : [];
+      if (isChecked) {
+        this.favouriteNews.push(data);
+        const index = this.favouriteNews.findIndex((item: any) => item.id === data.id);
+      } else {
+        const index = this.favouriteNews.findIndex((item: any) => item.id === data.id);
+        if (index !== -1) {
+          this.favouriteNews.splice(index, 1);
+        }
       }
+      this.themeService.favouriteNews11 = this.favouriteNews;
+      localStorage.setItem('favMenu', JSON.stringify(this.favouriteNews));
     }
-    this.themeService.favouriteNews11 = this.favouriteNews;
-    localStorage.setItem('favMenu', JSON.stringify(this.favouriteNews));
   }
-  
+
 }
 
 

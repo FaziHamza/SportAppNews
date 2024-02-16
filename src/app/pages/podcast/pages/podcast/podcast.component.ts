@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { SharedModule } from '../../../../shared/modules/shared.module';
 import { ApiService } from '../../../../api.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-podcast',
   standalone: true,
@@ -20,26 +21,32 @@ export class PodcastComponent implements OnInit {
   PodcastStarts: boolean = false;
 
 
-  constructor(public api: ApiService, private sanitizer: DomSanitizer) {
+  constructor(
+    public api: ApiService,
+    private sanitizer: DomSanitizer,
+    @Inject(PLATFORM_ID) private platformId: Object) {
 
   }
   ngOnInit(): void {
-    const subtopicId = localStorage.getItem('subtiopicId');
-    this.api.getPodCast(subtopicId).subscribe((data) => {
-      debugger
-      this.PodcastHilight = data
-      this.PodcastHilight = this.PodcastHilight.data;
-      this.MainHighLight = this.PodcastHilight.splice(0, 1)[0];
-      this.mainEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(this.MainHighLight.embededCode);
+    if (isPlatformBrowser(this.platformId)) {
+      const subtopicId = localStorage.getItem('subtiopicId');
+      this.api.getPodCast(subtopicId).subscribe((data) => {
+        debugger
+        this.PodcastHilight = data
+        this.PodcastHilight = this.PodcastHilight.data;
+        this.MainHighLight = this.PodcastHilight.splice(0, 1)[0];
+        this.mainEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(this.MainHighLight.embededCode);
 
-      for (let index = 0; index < this.PodcastHilight.length; index++) {
-        const element = this.PodcastHilight[index];
-        this.podcastEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(element.embededCode);
-        this.sanitizePodcast.push(this.podcastEmdcodeSanitize)
+        for (let index = 0; index < this.PodcastHilight.length; index++) {
+          const element = this.PodcastHilight[index];
+          this.podcastEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(element.embededCode);
+          this.sanitizePodcast.push(this.podcastEmdcodeSanitize)
 
-      }
+        }
 
-    })
+      })
+    }
+
   }
 
   playPodcast() {

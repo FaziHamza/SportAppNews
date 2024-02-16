@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { SharedModule } from '../../../../shared/modules/shared.module';
 import { ApiService } from '../../../../api.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../../../theme-service.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-article',
@@ -32,7 +33,8 @@ export class ArticleComponent implements OnInit {
     public route: ActivatedRoute,
     public api: ApiService,
     private router: Router,
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
   ngOnInit(): void {
@@ -42,19 +44,22 @@ export class ArticleComponent implements OnInit {
       this.api.keyword = keyword
 
       this.handleFetchNewsData(keyword);
-      let favouriteNews: any = localStorage.getItem('favMenu');
-      this.themeService.favouriteNews11 = favouriteNews ? JSON.parse(favouriteNews) : [];
+      if (isPlatformBrowser(this.platformId)) {
+        let favouriteNews: any = localStorage.getItem('favMenu');
+        this.themeService.favouriteNews11 = favouriteNews ? JSON.parse(favouriteNews) : [];
+  
+        // show and hide video and pordcast buttons
+        const subtopicId = localStorage.getItem('subtiopicId');
+        this.api.CheckVideoStatus(subtopicId).subscribe((res) => {
+          debugger;
+          this.status = res
+          this.status = this.status.data
+  
+          this.videoStatus = this.status.videoHighlight
+          this.pordCastStatus = this.status.videoPodcast
+        });
+      }
 
-      // show and hide video and pordcast buttons
-      const subtopicId = localStorage.getItem('subtiopicId');
-      this.api.CheckVideoStatus(subtopicId).subscribe((res) => {
-        debugger;
-        this.status = res
-        this.status = this.status.data
-
-        this.videoStatus = this.status.videoHighlight
-        this.pordCastStatus = this.status.videoPodcast
-      });
     });
     this.api.GetTopicWithSubTopic().subscribe(res => {
       this.menuItems = res.menuItems;
