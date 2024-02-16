@@ -34,10 +34,8 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       const keyword = params['keyword'] || 'Dressyr'; // Use 'Dressyr' as default if keyword is not present
-      console.log('keyword', keyword);
       this.keywords = keyword
       this.api.keyword = keyword
-      console.log(this.keywords);
 
       this.handleFetchNewsData(keyword);
       let favouriteNews: any = localStorage.getItem('favMenu');
@@ -45,23 +43,17 @@ export class ArticleComponent implements OnInit {
 
       // show and hide video and pordcast buttons
       const subtopicId = localStorage.getItem('subtiopicId');
-      console.log('subtopicId:', subtopicId);
       this.api.CheckVideoStatus(subtopicId).subscribe((res) => {
         debugger;
-        console.log('status:', res);
         this.status = res
         this.status = this.status.data
-        console.log('status:', this.status);
 
         this.videoStatus = this.status.videoHighlight
-        console.log("videoStatus:", this.videoStatus);
         this.pordCastStatus = this.status.videoPodcast
-        console.log("portCastStatusthis", this.pordCastStatus);
       });
     });
     this.api.GetTopicWithSubTopic().subscribe(res => {
       this.menuItems = res.menuItems;
-      console.log(this.menuItems, "bottomNav")
     });
 
   }
@@ -75,34 +67,18 @@ export class ArticleComponent implements OnInit {
   }
   handleFetchNewsData(keyword: string): void {
     this.api.getNews(keyword).subscribe((data: any) => {
-      // Handle the fetched news data here
       this.fullData = data;
-      console.log('full data', this.fullData);
       if (this.fullData) {
         this.newsData = data;
-        console.log("data2:", this.newsData);
-
         this.firstRecord = this.newsData.splice(0, 1)[0];
-        console.log(this.firstRecord);
-
         this.nextThreeRecords = this.newsData.splice(0, 3);
-        console.log(this.nextThreeRecords);
-
-
-        console.log('fetuch data', keyword, ":", this.newsData);
       }
-
-
     });
   }
   MoveToNews(keyword: any) {
-    console.log(keyword);
     this.router.navigate(['news', keyword])
   }
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
   }
-
-
-
 }

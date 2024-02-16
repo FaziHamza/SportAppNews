@@ -28,9 +28,7 @@ export class SharedSidebarComponent implements OnInit {
     
       this.data = this.mergeSubtopicsDynamic(this.data);
       this.menuItems = this.data;
-      console.log("menuItems", this.menuItems);
-      console.log("data", this.data);
-
+     
 
     });
   }
@@ -90,7 +88,6 @@ export class SharedSidebarComponent implements OnInit {
 
   subTopicId(id:any){
     debugger
-    console.log("sub topic id: " + id);
     localStorage.setItem('subTopicId','');
     localStorage.setItem('subtiopicId',id);
   }
@@ -110,7 +107,6 @@ export class SharedSidebarComponent implements OnInit {
     }
     this.themeService.favouriteNews11 = this.favouriteNews;
     localStorage.setItem('favMenu', JSON.stringify(this.favouriteNews));
-    console.log("favouriteNews", this.favouriteNews, "favouriteNews");
   }
   
 }

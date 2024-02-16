@@ -7,7 +7,7 @@
                            
                             <div class="flex items-center p-1 text-black">
                                 <h2 class="truncate">
-                                 {{articleDetails._title}}
+                                 {{newsData?._title}}
                                 </h2>
                             </div>
                             <div class="flex gap-x-1 items-center">
@@ -17,8 +17,8 @@
                         <div class="w-full  rounded-md   text-black flex justify-evenly mb-2.5">
                             <div class="w-full h-auto  max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    [src]="articleDetails._medias[1].href"
-                                    alt="/api/news/getimage?newsId=d657588f-3b59-4046-d0db-08dc217eefb5">
+                                    [src]="newsData?._medias[1].href"
+                                  >
                             </div>
                         </div>
                   
@@ -31,7 +31,7 @@
                                     src="https://sportatsite.com/assets/Sportspot_news_non_transparent-742b556b.png"
                                     alt>
                             </h6></div>
-                                <p class=" text-black text-[10px] " >Foto:{{articleDetails._Creator }}</p>
+                                <p class=" text-black text-[10px] " >Foto:{{newsData?._Creator }}</p>
                             </div>
                         
                         <div class="flex gap-x-1 items-center">
@@ -47,7 +47,7 @@
                     </div>
                     <!-- Text Area -->
                     <div class="font-source-sans-3  p-2 text-black mt-5 shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)]">
-                        <!-- <p>{{articleDetails._abstract}} </p> -->
+                        <!-- <p>{{newsData?._abstract}} </p> -->
                         <div class="mt-3" [innerHTML]="sanitizedContent">
                             </div>
 
@@ -79,7 +79,7 @@
                 <div class="flex justify-between items-center font-semibold mb-1 text-lg">
                     <div class="flex items-center">
                         <h2 class=" text-black">
-                            {{articleDetails._title}}
+                            {{newsData?._title}}
                         </h2>
                     </div>
                    
@@ -90,7 +90,7 @@
                         <div class="w-full  rounded-md   text-black flex justify-evenly mb-2.5">
                             <div class="w-full h-auto max-h-[350px]">
                                 <img class="w-full object-cover h-[260px] rounded align-middle"
-                                    [src]="articleDetails._medias[1].href">
+                                    [src]="newsData?._medias[1].href">
                             </div>
                         </div>
                    
@@ -105,7 +105,7 @@
                                             alt>
                                     </h6>
                                 </div>
-                                <p class=" text-black text-[10px] " >Foto:{{articleDetails._Creator }}</p>
+                                <p class=" text-black text-[10px] " >Foto:{{newsData?._Creator }}</p>
                             </div>
                        
                         <div class="flex gap-x-1 items-center">
@@ -122,7 +122,7 @@
                     <!-- Text Area -->
                     <div class="font-source-sans-3  text-black mt-5">
                    
-                        <!-- <p>{{articleDetails._abstract}} </p> -->
+                        <!-- <p>{{newsData?._abstract}} </p> -->
                         <div [innerHTML]="sanitizedContent"></div>
                         </div>
 

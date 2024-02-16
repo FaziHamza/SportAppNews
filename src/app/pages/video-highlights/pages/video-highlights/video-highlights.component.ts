@@ -25,8 +25,6 @@ export class VideoHighlightsComponent implements OnInit  {
   ngOnInit(): void {
     
     const subtopicId=localStorage.getItem('subtiopicId');
-  console.log('subtopicId:',subtopicId);
-  
   
     this.api.GetVideoHighLight(subtopicId).subscribe((data)=>{
       debugger
@@ -38,15 +36,8 @@ for (let index = 0; index < this.videoHilight.length; index++) {
   const element = this.videoHilight[index];
   this.VideoEmdcodeSanitize = this.sanitizer.bypassSecurityTrustHtml(element.embededCode);
   this.sanitizeVideos.push(this.VideoEmdcodeSanitize)
-  console.log("elementembededCode",this.sanitizeVideos);
   
 }
-// this.videoHilightSanitize=this.sanitizer.bypassSecurityTrustHtml(this.videoHilight
-console.log('emdCodeSanitize',this.mainEmdcodeSanitize);
-
-console.log('mainHighlight', this.MainHighLight);
-
-      console.log('videoHilight',this.videoHilight);
       
     });
   }
@@ -54,14 +45,11 @@ console.log('mainHighlight', this.MainHighLight);
     this.VideoStart=!this.VideoStart;
   }
   playVideos(index: number) {
-    console.log(index);
     
     debugger
     
     // Set the embed code corresponding to the clicked thumbnail
     this.videoSanitized = this.sanitizeVideos[index];
-    console.log(typeof this.videoSanitized);
-    console.log( this.videoSanitized);
     this.VideoStarts=!this.VideoStarts;
   }
 

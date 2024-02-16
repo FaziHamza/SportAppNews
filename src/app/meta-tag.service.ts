@@ -22,7 +22,7 @@ export class MetaTagService {
   }
 
   updateOGUrlTag(content: string) {
-    this.meta.updateTag({ property: 'og:title', content: content });
+    this.meta.updateTag({ property: 'og:url', content: content });
   }
 
 }
