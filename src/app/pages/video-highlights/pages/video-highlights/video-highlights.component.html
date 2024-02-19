@@ -24,7 +24,7 @@
                             <p>videos</p>
                         </div>
 
-                        <div (click)="playVideo()" class="w-full h-[320px] "style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}});" >
+                        <div (click)="playVideo()" class="w-full h-[320px] "style="background-image: url(https://sportifiedspot.com/{{MainHighLight?.thumbnail}});" >
   
                           
                       <div class="absolute inset-0 flex items-center justify-center">
@@ -35,9 +35,9 @@
                         <!-- text area -->
                         <div class="w-full text-center">
                             <strong>
-                                <h5 class="mt-2 text-lg">{{MainHighLight.text}}</h5>
+                                <h5 class="mt-2 text-lg">{{MainHighLight?.text}}</h5>
                             </strong>
-                            <P class="mt-1 text-sm">{{MainHighLight.datetime}}</P>
+                            <P class="mt-1 text-sm">{{MainHighLight?.datetime}}</P>
                         </div>
                     </div>
                     <div class="fixed inset-0 bg-[#00000087] z-20" *ngIf="VideoStarts">
@@ -106,7 +106,7 @@
                         <div class=" absolute top-6 left-2 z-10 bg-[#fde42f] rounded-md w-16 text-sm text-center p-0.5">
                             <p>videos</p>
                         </div>
-                        <div (click)="playVideo()" class="w-full relative h-[150px]" style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}});">
+                        <div (click)="playVideo()" class="w-full relative h-[150px]" style="background-image: url(https://sportifiedspot.com/{{MainHighLight?.thumbnail}});">
                            
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
@@ -118,9 +118,9 @@
                         <!-- text area -->
                         <div class="w-auto p-2">
                             <strong>
-                                <h5 class="mt-2 text-base">{{MainHighLight.text}}</h5>
+                                <h5 class="mt-2 text-base">{{MainHighLight?.text}}</h5>
                             </strong>
-                            <P class="text-center text-xs">{{MainHighLight.datetime}}</P>
+                            <P class="text-center text-xs">{{MainHighLight?.datetime}}</P>
                         </div>
                     </div>
                     <ng-container  *ngFor="let item of videoHilight; let i = index">
@@ -135,7 +135,7 @@
                               </div>
                             </div>
                           </div>
-                        <div  (click)="playVideos(i)" class="w-4/12 relative" style="background-image: url(https://sportifiedspot.com/{{MainHighLight.thumbnail}})">
+                        <div  (click)="playVideos(i)" class="w-4/12 relative" style="background-image: url(https://sportifiedspot.com/{{MainHighLight?.thumbnail}})">
                             
                             <!-- Play icon -->
                             <div class="absolute inset-0 flex items-center justify-center">
