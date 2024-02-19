@@ -80,7 +80,7 @@ export class ArticleComponent implements OnInit {
       if (this.fullData) {
         this.newsData = data;
         this.firstRecord = this.newsData.splice(0, 1)[0];
-        this.nextThreeRecords = this.newsData.splice(0, 3);
+        this.nextThreeRecords = this.newsData.splice(0, 4);
       }
     });
   }
